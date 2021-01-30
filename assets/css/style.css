@@ -1,6 +1,17 @@
-.red-border {
+.bordr {
     border-style: dashed;
     border-color: red;
-    
+    border-width: 2px;
+}
+
+.blue-border {
+    border-style: dashed;
+    border-color: blue;
+    border-width: 2px;
+}
+
+.green-border {
+    border-style: dashed;
+    border-color: green;
     border-width: 2px;
 }
