@@ -1,0 +1,6 @@
+.red-border {
+    border-style: dashed;
+    border-color: red;
+    
+    border-width: 2px;
+}
