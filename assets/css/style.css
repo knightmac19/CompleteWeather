@@ -15,3 +15,14 @@
     border-color: green;
     border-width: 2px;
 }
+
+#footer {
+    display:flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    align-items:center;
+    padding-top: 30px;
+  } 
