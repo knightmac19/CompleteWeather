@@ -16,6 +16,17 @@
     border-width: 2px;
 }
 
+.black-border {
+    border-style: dashed;
+    border-color: black;
+    border-width: 2px;
+}
+
+.night-temp {
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
 #footer {
     display:flex;
     position: fixed;
@@ -26,3 +37,30 @@
     align-items:center;
     padding-top: 30px;
   } 
+
+  /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 768px) {
+    .night-temp {
+        visibility: hidden;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
