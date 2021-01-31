@@ -19,16 +19,16 @@ $(document).ready(() => {
         dayFivePrimary = false;
     };
 
-    const resetTrue = () => {
-        currentWeatherPrimary = true;
-        dayOnePrimary = true;
-        dayTwoPrimary = true;
-        dayThreePrimary = true;
-        dayFourPrimary = true;
-        dayFivePrimary = true;
-    };
+    // const resetTrue = () => {
+    //     currentWeatherPrimary = true;
+    //     dayOnePrimary = true;
+    //     dayTwoPrimary = true;
+    //     dayThreePrimary = true;
+    //     dayFourPrimary = true;
+    //     dayFivePrimary = true;
+    // };
 
-    if ($(window).width() <= 600) {
+    if (window.innerWidth <= 600) {
         $('#current-col').removeClass('default-lg-bg').addClass('day-background');
         dayNight.text('default small');
         $('#day-one').removeClass('bg-primary').addClass('five-day');
@@ -42,7 +42,8 @@ $(document).ready(() => {
     }
 
     const check = () => {
-        if ($(window).width() <= 600 ) {
+        // console.log(window.innerWidth);
+        if (window.innerWidth <= 600 ) {
             $('#current-col').removeClass('default-lg-bg').addClass('day-background');
             dayNight.text('Day');
             $('#day-one').removeClass('bg-primary').addClass('five-day');
@@ -63,7 +64,7 @@ $(document).ready(() => {
     };
 
     $('#current-col').on('click', () => {
-        if ($(window).width() <= 600) {
+        if (window.innerWidth <= 600) {
             if (currentWeatherPrimary) {
                 $('#current-col').removeClass('default-lg-bg night-background').addClass('day-background');
                 dayNight.text('Day');
@@ -78,7 +79,7 @@ $(document).ready(() => {
     });
 
     $('#day-one').on('click', () => {
-        if ($(window).width() <= 600) {
+        if (window.innerWidth <= 600) {
             if (dayOnePrimary) {
                 $('#day-one').removeClass('bg-primary five-night').addClass('five-day');
                 dayOnePrimary = false;        
@@ -91,7 +92,7 @@ $(document).ready(() => {
     });
 
     $('#day-two').on('click', () => {
-        if ($(window).width() <= 600) {
+        if (window.innerWidth <= 600) {
             if (dayTwoPrimary) {
                 $('#day-two').removeClass('bg-primary five-night').addClass('five-day');
                 dayTwoPrimary = false;        
@@ -104,7 +105,7 @@ $(document).ready(() => {
     });
 
     $('#day-three').on('click', () => {
-        if ($(window).width() <= 600) {
+        if (window.innerWidth <= 600) {
             if (dayThreePrimary) {
                 $('#day-three').removeClass('bg-primary five-night').addClass('five-day');
                 dayThreePrimary = false;        
@@ -117,7 +118,7 @@ $(document).ready(() => {
     });
 
     $('#day-four').on('click', () => {
-        if ($(window).width() <= 600) {
+        if (window.innerWidth <= 600) {
             if (dayFourPrimary) {
                 $('#day-four').removeClass('bg-primary five-night').addClass('five-day');
                 dayFourPrimary = false;        
@@ -130,7 +131,7 @@ $(document).ready(() => {
     });
 
     $('#day-five').on('click', () => {
-        if ($(window).width() <= 600) {
+        if (window.innerWidth <= 600) {
             if (dayFivePrimary) {
                 $('#day-five').removeClass('bg-primary five-night').addClass('five-day');
                 dayFivePrimary = false;        
