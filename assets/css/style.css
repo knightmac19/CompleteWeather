@@ -40,8 +40,13 @@
 
   /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 768px) {
-    .night-temp {
-        visibility: hidden;
+    
+}
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+    .cities-list {
+        display: none;
     }
 }
 
@@ -56,8 +61,10 @@
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-
+@media only screen and (max-width: 992px) {
+    .five-day-date {
+        display: none;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */

@@ -29,4 +29,8 @@
     -use cities list in local storage to render list to UI
     -add click listeners so that clicking a city name reloads that city's results
         -add a timestamp to each request, and if user makes the same request for the same city within 30 minutes, return statically-stored data from local storage
+
+
+    --on layout: 
+        if less than 768px, for 5-day section: display 2 rows -- 1 of 3 columns, 1 of 2 columns, with nighttime sky & temp info as part of each card
 */
