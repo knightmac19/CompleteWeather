@@ -45,9 +45,13 @@
 
   /* Extra small devices (phones, 600px and down) */
   @media only screen and (max-width: 600px) {
-    .cities-list {
+    .cities-list, .night-temp-row, .current-night {
         display: none;
     }
+
+    .night-temp {
+        display: block;
+    }    
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
