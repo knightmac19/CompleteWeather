@@ -36,12 +36,12 @@ $(document).ready(() => {
 
     $('#day-two').on('click', () => {
         if ($(window).width() < 600) {
-            if (dayOnePrimary) {
+            if (dayTwoPrimary) {
                 $('#day-two').removeClass('bg-dark').addClass('bg-primary');
-                dayOnePrimary = false;        
+                dayTwoPrimary = false;        
             } else {
                 $('#day-two').removeClass('bg-primary').addClass('bg-dark');
-                dayOnePrimary = true;
+                dayTwoPrimary = true;
             }
         }
         return;
@@ -49,12 +49,12 @@ $(document).ready(() => {
     
     $('#day-three').on('click', () => {
         if ($(window).width() < 600) {
-            if (dayOnePrimary) {
+            if (dayThreePrimary) {
                 $('#day-three').removeClass('bg-dark').addClass('bg-primary');
-                dayOnePrimary = false;        
+                dayThreePrimary = false;        
             } else {
                 $('#day-three').removeClass('bg-primary').addClass('bg-dark');
-                dayOnePrimary = true;
+                dayThreePrimary = true;
             }
         }
         return;
@@ -62,12 +62,12 @@ $(document).ready(() => {
 
     $('#day-four').on('click', () => {
         if ($(window).width() < 600) {
-            if (dayOnePrimary) {
+            if (dayFourPrimary) {
                 $('#day-four').removeClass('bg-dark').addClass('bg-primary');
-                dayOnePrimary = false;        
+                dayFourPrimary = false;        
             } else {
                 $('#day-four').removeClass('bg-primary').addClass('bg-dark');
-                dayOnePrimary = true;
+                dayFourPrimary = true;
             }
         }
         return;
@@ -75,12 +75,12 @@ $(document).ready(() => {
 
     $('#day-five').on('click', () => {
         if ($(window).width() < 600) {
-            if (dayOnePrimary) {
+            if (dayFivePrimary) {
                 $('#day-five').removeClass('bg-dark').addClass('bg-primary');
-                dayOnePrimary = false;        
+                dayFivePrimary = false;        
             } else {
                 $('#day-five').removeClass('bg-primary').addClass('bg-dark');
-                dayOnePrimary = true;
+                dayFivePrimary = true;
             }
         }
         return;
