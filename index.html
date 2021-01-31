@@ -41,17 +41,17 @@
             </div>
             <div class="col-lg-9 col-md-9">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 blue-border">
-                        <h3>Current weather</h3>
+                    <div id="current-col" class="default-lg-bg col-lg-12 col-md-12 col-sm-12 blue-border text-light">
+                        <h3 id="day-night"></h3>
                         <div class="row">
-                            <div class="col current-day bg-primary text-light">
+                            <div class="col">
                                 <p>condition</p>
                                 <p>temp</p>
                                 <p>humidity</p>
                                 <p>wind</p>
                                 <p>uv index</p>
                             </div>
-                            <div class="col current-night bg-dark text-light">
+                            <div class="col current-night">
                                 <p>condition</p>
                                 <p>temp</p>
                                 <p>humidity</p>
@@ -64,7 +64,7 @@
                 <div class="row">
                     <div id="day-one" class="col green-border bg-primary text-light m-2">
                         <h6 class="five-day-date">01/29/21</h6>
-                        <p>icon</p>
+                        <p id="icon">icon</p>
                         <p>high</p>
                         <p>low</p>
                     </div>

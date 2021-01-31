@@ -1,3 +1,54 @@
+.default-lg-bg {    
+    background-color: #343a40;
+    background-image:
+        linear-gradient(
+        to left, 
+        #343a40,
+        #007bff 
+    );
+      
+}
+
+.day-background {
+    background-color: #343a40;
+    background-image:
+        linear-gradient(
+        to left, 
+        #343a40,
+        #007bff 33%
+    );
+}
+
+.night-background {
+    background-color: #007bff;
+    background-image:
+        linear-gradient(
+        to left, 
+        #007bff,
+        #343a40 33%
+    );
+}
+
+.five-day {
+    background-color: #343a40;
+    background-image:
+        linear-gradient(
+        to top, 
+        #343a40,
+        #007bff 33%
+    );
+}
+
+.five-night {
+    background-color: #007bff;
+    background-image:
+        linear-gradient(
+        to top, 
+        #007bff,
+        #343a40 33%
+    );
+}
+
 .bordr {
     border-style: dashed;
     border-color: red;
