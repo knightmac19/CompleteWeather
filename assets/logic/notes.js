@@ -33,4 +33,15 @@
 
     --on layout: 
         if less than 768px, for 5-day section: display 2 rows -- 1 of 3 columns, 1 of 2 columns, with nighttime sky & temp info as part of each card
+
+
+
+
+    css:
+        rainy day: https://codepen.io/arickle/pen/XKjMZY
+        clear sunny: https://codepen.io/nitinnairdev/pen/exVLow
+        snowing: https://codepen.io/codeconvey/pen/xRzQay
+        cloudy: https://codepen.io/jkavenka/pen/XYKqpO
+        clear night: https://codepen.io/tulioha/pen/fkClK
+
 */
