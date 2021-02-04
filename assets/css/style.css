@@ -4,7 +4,6 @@ body {
 
 .my-shadow {
     box-shadow: 8px 8px 4px #80bdff;
-    /* box-shadow: 8px 8px black; */
 }
 
 .jumbo-day {
@@ -13,8 +12,6 @@ body {
 
   #current-col {
     border-radius: 12px;
-    /* height: 100%;
-    width: 100% */
   }
 
   .card {
@@ -73,30 +70,6 @@ body {
         #007bff,
         #343a40 33%
     );
-}
-
-.bordr {
-    border-style: dashed;
-    border-color: red;
-    border-width: 2px;
-}
-
-.blue-border {
-    border-style: dashed;
-    border-color: blue;
-    border-width: 2px;
-}
-
-.green-border {
-    border-style: dashed;
-    border-color: green;
-    border-width: 2px;
-}
-
-.black-border {
-    border-style: dashed;
-    border-color: black;
-    border-width: 2px;
 }
 
 .night-temp-row {
