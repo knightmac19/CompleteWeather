@@ -2,8 +2,23 @@ body {
     background-color: #e6f2ff;
 }
 
+.my-shadow {
+    box-shadow: 8px 8px 4px #80bdff;
+    /* box-shadow: 8px 8px black; */
+}
+
 .jumbo-day {
     background: linear-gradient(to bottom, #007bff, #e6f2ff);  
+  }
+
+  #current-col {
+    border-radius: 12px;
+    /* height: 100%;
+    width: 100% */
+  }
+
+  .card {
+    border-radius: 8px;
   }
 
 .default-lg-bg {    
@@ -14,7 +29,6 @@ body {
         #343a40,
         #007bff 
     );
-      
 }
 
 .day-background {
