@@ -20,134 +20,134 @@
 </head>
 <body>
 
-<main>
-    <div class="back-row-toggle splat-toggle jumbotron jumbo-day jumbotron-fluid bg-secondary mb-3">
-        <div class="container text-light">
-            <h1 class="display-4">Your Weather</h1>
+    <main class="mb-5">
+        <div class="back-row-toggle splat-toggle jumbotron jumbo-day jumbotron-fluid bg-secondary mb-3">
+            <div class="container text-light">
+                <h1 class="display-4">Your Weather</h1>
+            </div>
+            <div class="rain front-row"></div>
+            <div class="rain back-row"></div>
         </div>
-        <div class="rain front-row"></div>
-        <div class="rain back-row"></div>
-    </div>
-    <div class="container mb-5">
-        <div class="row">
+        <div class="container mb-5">
+            <div class="row">
 
-            <!-- search box and cities list column -->
-            <div class="col-lg-3 col-md-3">
-                <div class="input-group mb-3 mt-3">
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="button"><i class="fas fa-search"></i></button>
+                <!-- search box and cities list column -->
+                <div class="col-lg-3 col-md-3">
+                    <div class="input-group mb-3 mt-3">
+                        <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="button"><i class="fas fa-search"></i></button>
+                        </div>
                     </div>
-                  </div>
-                <div class="cities-list mb-2">
-                    <button type="button" style="width:100%" class="btn btn-outline-primary mb-2">Queretaro</button>
-                    <button type="button" style="width:100%" class="btn btn-outline-primary mb-2">New York</button>
+                    <div class="cities-list mb-2">
+                        <button type="button" style="width:100%" class="btn btn-outline-primary mb-2">Queretaro</button>
+                        <button type="button" style="width:100%" class="btn btn-outline-primary mb-2">New York</button>
+                    </div>
+                </div>
+
+                <!-- current, five-day, nighttime information -->
+                <div class="col-lg-9 col-md-9">
+                    
+                    <!-- current weather information -->
+                    <div class="row">
+                        <div id="current-col" class="default-lg-bg my-shadow col-lg-12 col-md-12 col-sm-12 text-light">
+                            <h3 id="day-night"></h3>
+                            <div class="row">
+                                <div class="col">
+                                    <p>condition</p>
+                                    <p>temp</p>
+                                    <p>humidity</p>
+                                    <p>wind</p>
+                                    <p>uv index</p>
+                                </div>
+                                <div class="col current-night">
+                                    <p>condition</p>
+                                    <p>temp</p>
+                                    <p>humidity</p>
+                                    <p>wind</p>
+                                    <p>uv index</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- row of five day forecast cards -->
+                    <div class="row flex-row justify-content-around pr-2 pl-2 mt-5">
+                            <div id="day-one" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
+                            <div class="card-body">
+                                <h5 class="five-day-date card-title">01/29/21</h5>
+                                <p class="card-text">icon</p>
+                                <p class="card-text">24&degC</p>
+                                <p class="card-text">87%</p>
+                            </div>
+                        </div>
+                        <div id="day-two" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
+                            <div class="card-body">
+                                <h5 class="five-day-date card-title">01/29/21</h5>
+                                <p class="card-text">icon</p>
+                                <p class="card-text">24&degC</p>
+                                <p class="card-text">87%</p>
+                            </div>
+                        </div>
+                        <div id="day-three" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
+                            <div class="card-body">
+                                <h5 class="five-day-date card-title">01/29/21</h5>
+                                <p class="card-text">icon</p>
+                                <p class="card-text">24&degC</p>
+                                <p class="card-text">87%</p>
+                            </div>
+                        </div>
+                        <div id="day-four" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
+                            <div class="card-body">
+                                <h5 class="five-day-date card-title">01/29/21</h5>
+                                <p class="card-text">icon</p>
+                                <p class="card-text">24&degC</p>
+                                <p class="card-text">87%</p>
+                            </div>
+                        </div>
+                        <div id="day-five" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
+                            <div class="card-body">
+                                <h5 class="five-day-date card-title">01/29/21</h5>
+                                <p class="card-text">icon</p>
+                                <p class="card-text">24&degC</p>
+                                <p class="card-text">87%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- row of nighttime cards -->
+                    <div class="row row-flex justify-content-around night-temp-row mt-2">
+                        <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
+                            <div class="card-body">
+                                <p class="card-text">icon</p>
+                                <p class="card-text">24&degC</p>
+                            </div>
+                        </div>
+                        <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
+                            <div class="card-body">
+                                <p class="card-text">icon</p>
+                                <p class="card-text">24&degC</p>
+                            </div>
+                        </div>
+                        <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
+                            <div class="card-body">
+                                <p class="card-text">icon</p>
+                                <p class="card-text">24&degC</p>
+                            </div>
+                        </div>
+                        <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
+                            <div class="card-body">
+                                <p class="card-text">icon</p>
+                                <p class="card-text">24&degC</p>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
-
-            <!-- current, five-day, nighttime information -->
-            <div class="col-lg-9 col-md-9">
-                
-                <!-- current weather information -->
-                <div class="row">
-                    <div id="current-col" class="default-lg-bg my-shadow col-lg-12 col-md-12 col-sm-12 text-light">
-                        <h3 id="day-night"></h3>
-                        <div class="row">
-                            <div class="col">
-                                <p>condition</p>
-                                <p>temp</p>
-                                <p>humidity</p>
-                                <p>wind</p>
-                                <p>uv index</p>
-                            </div>
-                            <div class="col current-night">
-                                <p>condition</p>
-                                <p>temp</p>
-                                <p>humidity</p>
-                                <p>wind</p>
-                                <p>uv index</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- row of five day forecast cards -->
-                <div class="row flex-row justify-content-around pr-2 pl-2 mt-5">
-                        <div id="day-one" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
-                        <div class="card-body">
-                            <h5 class="five-day-date card-title">01/29/21</h5>
-                            <p class="card-text">icon</p>
-                            <p class="card-text">24&degC</p>
-                            <p class="card-text">87%</p>
-                        </div>
-                    </div>
-                    <div id="day-two" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
-                        <div class="card-body">
-                            <h5 class="five-day-date card-title">01/29/21</h5>
-                            <p class="card-text">icon</p>
-                            <p class="card-text">24&degC</p>
-                            <p class="card-text">87%</p>
-                        </div>
-                    </div>
-                    <div id="day-three" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
-                        <div class="card-body">
-                            <h5 class="five-day-date card-title">01/29/21</h5>
-                            <p class="card-text">icon</p>
-                            <p class="card-text">24&degC</p>
-                            <p class="card-text">87%</p>
-                        </div>
-                    </div>
-                    <div id="day-four" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
-                        <div class="card-body">
-                            <h5 class="five-day-date card-title">01/29/21</h5>
-                            <p class="card-text">icon</p>
-                            <p class="card-text">24&degC</p>
-                            <p class="card-text">87%</p>
-                        </div>
-                    </div>
-                    <div id="day-five" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
-                        <div class="card-body">
-                            <h5 class="five-day-date card-title">01/29/21</h5>
-                            <p class="card-text">icon</p>
-                            <p class="card-text">24&degC</p>
-                            <p class="card-text">87%</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- row of nighttime cards -->
-                <div class="row row-flex justify-content-around night-temp-row mt-2">
-                    <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
-                        <div class="card-body">
-                            <p class="card-text">icon</p>
-                            <p class="card-text">24&degC</p>
-                        </div>
-                    </div>
-                    <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
-                        <div class="card-body">
-                            <p class="card-text">icon</p>
-                            <p class="card-text">24&degC</p>
-                        </div>
-                    </div>
-                    <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
-                        <div class="card-body">
-                            <p class="card-text">icon</p>
-                            <p class="card-text">24&degC</p>
-                        </div>
-                    </div>
-                    <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
-                        <div class="card-body">
-                            <p class="card-text">icon</p>
-                            <p class="card-text">24&degC</p>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
         </div>
-    </div>
-</main>
+    </main>
 
     <div id="footer" class="bg-secondary">
         <div class="container">
