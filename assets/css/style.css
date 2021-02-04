@@ -72,6 +72,10 @@ body {
     );
 }
 
+/* main:hover {
+    padding-bottom: 10%;
+  } */
+
 .night-temp-row {
     margin-left: 8%;
     margin-right: 8%;
@@ -79,13 +83,13 @@ body {
 
 #footer {
     display:flex;
-    position: fixed;
+    /* position: absolute;
     bottom: 0;
     left: 0;
-    right: 0;
+    right: 0; */
     height: 50px;
     align-items:center;
-    padding-top: 30px;
+    
   } 
 
   /* Extra small devices (phones, 600px and down) */
