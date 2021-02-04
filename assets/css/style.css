@@ -21,6 +21,10 @@ body {
     border-radius: 8px;
   }
 
+  .night-shadow {
+      box-shadow: 8px 8px 4px black;
+  }
+
 .default-lg-bg {    
     background-color: #343a40;
     background-image:

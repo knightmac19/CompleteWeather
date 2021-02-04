@@ -29,21 +29,25 @@
     </div>
     <div class="container mb-5">
         <div class="row">
-            <div class="col-lg-3 col-md-3 bordr">
+
+            <!-- search box and cities list column -->
+            <div class="col-lg-3 col-md-3">
                 <div class="input-group mb-3 mt-3">
                     <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                        <!-- <i class="fas fa-search"></i> -->
                         <button class="btn btn-outline-primary" type="button"><i class="fas fa-search"></i></button>
                     </div>
                   </div>
-                <!-- <h1>hello world</h1> -->
                 <div class="cities-list mb-2">
                     <button type="button" style="width:100%" class="btn btn-outline-primary mb-2">Queretaro</button>
                     <button type="button" style="width:100%" class="btn btn-outline-primary mb-2">New York</button>
                 </div>
             </div>
+
+            <!-- current, five-day, nighttime information -->
             <div class="col-lg-9 col-md-9">
+                
+                <!-- current weather information -->
                 <div class="row">
                     <div id="current-col" class="default-lg-bg my-shadow col-lg-12 col-md-12 col-sm-12 blue-border text-light">
                         <h3 id="day-night"></h3>
@@ -65,106 +69,80 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- row of five day forecast cards -->
                 <div class="row flex-row justify-content-around pr-2 pl-2 mt-5">
-                    <!-- <div class="col green-border "> -->
                         <div id="day-one" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
-                            <div class="card-body">
-                                <h5 class="five-day-date card-title">01/29/21</h5>
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
-                                <p class="card-text">87%</p>
-                                <!-- <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a> -->
-                            </div>
-                        <!-- </div> -->
-                        <!-- <h6 class="five-day-date">01/29/21</h6>
-                        <p>icon</p>
-                        <p>high</p>
-                        <p>low</p> -->
+                        <div class="card-body">
+                            <h5 class="five-day-date card-title">01/29/21</h5>
+                            <p class="card-text">icon</p>
+                            <p class="card-text">24&degC</p>
+                            <p class="card-text">87%</p>
+                        </div>
                     </div>
-                    <!-- <div class="col green-border "> -->
-                        <div id="day-two" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
-                            <div class="card-body">
-                                <h5 class="five-day-date card-title">01/29/21</h5>
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
-                                <p class="card-text">87%</p>
-                                <!-- <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a> -->
-                            </div>
-                        <!-- </div> -->
-                        <!-- <h6 class="five-day-date">01/29/21</h6>
-                        <p>icon</p>
-                        <p>high</p>
-                        <p>low</p> -->
+                    <div id="day-two" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
+                        <div class="card-body">
+                            <h5 class="five-day-date card-title">01/29/21</h5>
+                            <p class="card-text">icon</p>
+                            <p class="card-text">24&degC</p>
+                            <p class="card-text">87%</p>
+                        </div>
                     </div>
-                    <!-- <div class="col green-border "> -->
-                        <div id="day-three" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
-                            <div class="card-body">
-                                <h5 class="five-day-date card-title">01/29/21</h5>
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
-                                <p class="card-text">87%</p>
-                                <!-- <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a> -->
-                            </div>
-                        <!-- </div> -->
-                        <!-- <h6 class="five-day-date">01/29/21</h6>
-                        <p>icon</p>
-                        <p>high</p>
-                        <p>low</p> -->
+                    <div id="day-three" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
+                        <div class="card-body">
+                            <h5 class="five-day-date card-title">01/29/21</h5>
+                            <p class="card-text">icon</p>
+                            <p class="card-text">24&degC</p>
+                            <p class="card-text">87%</p>
+                        </div>
                     </div>
-                    <!-- <div class="col green-border "> -->
-                        <div id="day-four" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
-                            <div class="card-body">
-                                <h5 class="five-day-date card-title">01/29/21</h5>
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
-                                <p class="card-text">87%</p>
-                                <!-- <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a> -->
-                            </div>
-                        <!-- </div> -->
-                        <!-- <h6 class="five-day-date">01/29/21</h6>
-                        <p>icon</p>
-                        <p>high</p>
-                        <p>low</p> -->
+                    <div id="day-four" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
+                        <div class="card-body">
+                            <h5 class="five-day-date card-title">01/29/21</h5>
+                            <p class="card-text">icon</p>
+                            <p class="card-text">24&degC</p>
+                            <p class="card-text">87%</p>
+                        </div>
                     </div>
-                    <!-- <div class="col green-border "> -->
-                        <div id="day-five" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
-                            <div class="card-body">
-                                <h5 class="five-day-date card-title">01/29/21</h5>
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
-                                <p class="card-text">87%</p>
-                                <!-- <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a> -->
-                            </div>
-                        <!-- </div> -->
-                        <!-- <h6 class="five-day-date">01/29/21</h6>
-                        <p>icon</p>
-                        <p>high</p>
-                        <p>low</p> -->
+                    <div id="day-five" class="card bg-primary my-shadow text-light mt-2" style="width: 19%;">
+                        <div class="card-body">
+                            <h5 class="five-day-date card-title">01/29/21</h5>
+                            <p class="card-text">icon</p>
+                            <p class="card-text">24&degC</p>
+                            <p class="card-text">87%</p>
+                        </div>
                     </div>
                 </div>
-                <div class="row night-temp-row mt-2">
-                    <div class="col black-border bg-dark text-light m-2">
-                        <p class="bordr">icon</p>
-                        <p class="bordr">low</p>
+
+                <!-- row of nighttime cards -->
+                <div class="row row-flex justify-content-around night-temp-row mt-2">
+                    <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
+                        <div class="card-body">
+                            <p class="card-text">icon</p>
+                            <p class="card-text">24&degC</p>
+                        </div>
                     </div>
-                    <div class="col black-border bg-dark text-light m-2">
-                        <p class="bordr">icon</p>
-                        <p class="bordr">low</p>
+                    <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
+                        <div class="card-body">
+                            <p class="card-text">icon</p>
+                            <p class="card-text">24&degC</p>
+                        </div>
                     </div>
-                    <div class="col black-border bg-dark text-light m-2">
-                        <p class="bordr">icon</p>
-                        <p class="bordr">low</p>
+                    <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
+                        <div class="card-body">
+                            <p class="card-text">icon</p>
+                            <p class="card-text">24&degC</p>
+                        </div>
                     </div>
-                    <div class="col black-border bg-dark text-light m-2">
-                        <p class="bordr">icon</p>
-                        <p class="bordr">low</p>
+                    <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
+                        <div class="card-body">
+                            <p class="card-text">icon</p>
+                            <p class="card-text">24&degC</p>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
