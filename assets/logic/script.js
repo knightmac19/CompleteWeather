@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    console.log('script ready!')
+    console.log('script ready!');
     
     let currentWeatherPrimary = false;
     let dayOnePrimary = false;
@@ -27,39 +27,44 @@ $(document).ready(() => {
         dayFivePrimary = false;
     }
     
-
+    // initial width check for layout
     if (window.innerWidth <= 600) {
+        $('.card-day').each(function() {
+            // console.log($(this));
+            $(this).css('width','75%');
+            $(this).removeClass('bg-primary').addClass('five-day');
+        });
         $('#current-col').removeClass('default-lg-bg').addClass('day-background');
         dayNight.text('default small');
-        $('#day-one').removeClass('bg-primary').addClass('five-day');
-        $('#day-two').removeClass('bg-primary').addClass('five-day');
-        $('#day-three').removeClass('bg-primary').addClass('five-day');
-        $('#day-four').removeClass('bg-primary').addClass('five-day');
-        $('#day-five').removeClass('bg-primary').addClass('five-day');
     } else {
+        $('.card-day').each(function() {
+            // console.log($(this));
+            $(this).css('width','18%');
+        });
         dayNight.text('default large');
         currentNight.addClass('text-center');
     }
 
+    // listening to update UI as width changes
     const check = () => {
         // console.log(window.innerWidth);
         if (window.innerWidth <= 600 ) {
+            $('.card-day').each(function() {
+                // console.log($(this));
+                $(this).css('width','75%');
+                $(this).removeClass('bg-primary').addClass('five-day');
+            });
             $('#current-col').removeClass('default-lg-bg').addClass('day-background');
             dayNight.text('Day');
-            $('#day-one').removeClass('bg-primary').addClass('five-day');
-            $('#day-two').removeClass('bg-primary').addClass('five-day');
-            $('#day-three').removeClass('bg-primary').addClass('five-day');
-            $('#day-four').removeClass('bg-primary').addClass('five-day');
-            $('#day-five').removeClass('bg-primary').addClass('five-day');
         } else {
             resetFalse();
+            $('.card-day').each(function() {
+                // console.log($(this));
+                $(this).css('width','18%');
+                $(this).removeClass('five-day five-night').addClass('bg-primary');
+            });
             $('#current-col').removeClass('night-background day-background').addClass('default-lg-bg');
             dayNight.text('default large');
-            $('#day-one').removeClass('five-day five-night').addClass('bg-primary');
-            $('#day-two').removeClass('five-day five-night').addClass('bg-primary');
-            $('#day-three').removeClass('five-day five-night').addClass('bg-primary');
-            $('#day-four').removeClass('five-day five-night').addClass('bg-primary');
-            $('#day-five').removeClass('five-day five-night').addClass('bg-primary');
         }
     };
 

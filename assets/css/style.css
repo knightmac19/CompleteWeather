@@ -8,19 +8,19 @@ body {
 
 .jumbo-day {
     background: linear-gradient(to bottom, #007bff, #e6f2ff);  
-  }
+}
 
-  #current-col {
+#current-col {
     border-radius: 12px;
-  }
+}
 
-  .card {
+.card {
     border-radius: 8px;
-  }
+}
 
-  .night-shadow {
-      box-shadow: 8px 8px 4px black;
-  }
+.night-shadow {
+    box-shadow: 8px 8px 4px black;
+}
 
 .default-lg-bg {    
     background-color: #343a40;
@@ -86,27 +86,28 @@ body {
     height: 50px;
     align-items:center;
     
-  } 
+} 
 
-  /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 768px) {
-    
-}
-
-  /* Extra small devices (phones, 600px and down) */
-  @media only screen and (max-width: 600px) {
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
     .cities-list, .night-temp-row, .current-night {
         display: none;
     }
 
+    .five-day-date {
+        display: block;
+    }
+
     .night-temp {
         display: block;
-    }    
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-    
+@media only screen and (min-width: 601px) {
+    .five-day-date {
+        display: none;
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -115,9 +116,9 @@ body {
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (max-width: 992px) {
+@media only screen and (min-width: 992px) {
     .five-day-date {
-        display: none;
+        display: block;
     }
 }
 
