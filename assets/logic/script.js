@@ -9,6 +9,7 @@ $(document).ready(() => {
     let dayFivePrimary = false;
     var dayNight = $('#day-night');
     var currentNight = $('.current-night');
+    var cities = $('#cities');
 
     const bgPrimary = 'bg-primary';
     const bgDark = 'bg-dark';
@@ -25,6 +26,10 @@ $(document).ready(() => {
         dayThreePrimary = false;
         dayFourPrimary = false;
         dayFivePrimary = false;
+    }
+
+    if (window.innerWidth < 768) {
+        cities.addClass('collapse');
     }
     
     // initial width check for layout
@@ -48,6 +53,12 @@ $(document).ready(() => {
     // listening to update UI as width changes
     const check = () => {
         // console.log(window.innerWidth);
+        if (window.innerWidth < 768) {
+            cities.addClass('collapse');
+        } else {
+            cities.removeClass('collapse');
+        }
+
         if (window.innerWidth <= 600 ) {
             $('.card-day').each(function() {
                 // console.log($(this));
