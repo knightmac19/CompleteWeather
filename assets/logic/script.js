@@ -1,5 +1,14 @@
 $(document).ready(() => {
     console.log('script ready!');
+
+    var citiesArray = [];
+
+    localStorage.setItem("cities", JSON.stringify(citiesArray));
+
+    var citiesList = JSON.parse(localStorage.getItem("cities"))
+    console.log(citiesList)
+
+
     
     let currentWeatherPrimary = false;
     let dayOnePrimary = false;
@@ -329,6 +338,6 @@ $(document).ready(() => {
 
     
 
-    const citiesList = ['New York', 'Seattle', 'Washington, D.C.', 'Queretaro'];
+    
 
 });
