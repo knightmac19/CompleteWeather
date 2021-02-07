@@ -72,6 +72,10 @@ body {
     );
 }
 
+.reload {
+    width: 100%;
+}
+
 .night-temp-row {
     margin-left: 5%;
     margin-right: 5%;

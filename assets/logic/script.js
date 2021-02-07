@@ -1,45 +1,54 @@
 $(document).ready(() => {
     console.log('script ready!');
-    const updateCities = () => {
-        citiesList = JSON.parse(localStorage.getItem('cities'));
-    }
 
-    // var citiesArray = [];
-
-    // localStorage.setItem("cities", JSON.stringify(citiesArray));
-
-    var citiesList = JSON.parse(localStorage.getItem('cities')) || [];
-    console.log(citiesList);
-    
-    
-
-    var searchBtn = $('.search-btn');
-    var input = $('.input');
-
+    // start: local storage & btn manipulation functions
     const setLocal = (arr) => {
         localStorage.setItem('cities', JSON.stringify(arr));
-
     };
 
     const capitalizeFirst = (str) => {
-        let words = str.toLowerCase().split(' '); 
-        // console.log(words);
+        let words = str.toLowerCase().split(' ');
         for (var i = 0; i < words.length; i++) {
             words[i] = words[i].charAt(0).toUpperCase() + words[i].substring(1);
         }
         return words.join(' ');
     }
 
-    
-    // capitalize first letter of each word, set in local storage, clear box
+    const renderBtns = arr => {
+        for (var i = 0; i < arr.length; i++) {
+            cities.prepend(`<button type="button" class="btn reload btn-outline-primary mb-2">${arr[i]}</button>`);
+        }
+    }
+
+    const updateList = (arr, el) => {
+        if (arr.includes(el)) {
+            let index = arr.indexOf(el)
+            arr.splice(index,1)
+            arr.push(el);
+            return arr;
+        } else {
+            arr.push(el)
+            return arr;
+        }
+    }
+    // end: local storage & btn manipulation functions
+
+    var cities = $('#cities');
+    var searchBtn = $('.search-btn');
+    var input = $('.input');
+
+    // set citiesList array to whatever is in local storage, or to empty array
+    var citiesList = JSON.parse(localStorage.getItem('cities')) || [];
+    renderBtns(citiesList);
+
     searchBtn.on('click', function() {
         let editedStr = capitalizeFirst(input.val());
-        citiesList.push(editedStr);
+        updateList(citiesList, editedStr);
         setLocal(citiesList);
+        cities.children().remove();
+        renderBtns(JSON.parse(localStorage.getItem('cities')));
         input.val('');
     });
-
-
     
     let currentWeatherPrimary = false;
     let dayOnePrimary = false;
@@ -185,8 +194,8 @@ $(document).ready(() => {
     var time = 'now'
     var date = '2/6/21'
 
-    function setCurrent(element, city, time, date, temp, humidity, wind, uv) {
-        console.log(element.children('h3'))
+    // set content for current weather card
+    const setCurrent = (element, city, time, date, temp, humidity, wind, uv) => {
         element.children('h3').text(city);
         element.children('h6').text(time);
         element.children('h4').text(date);
@@ -197,11 +206,10 @@ $(document).ready(() => {
         parent.children('p.humid').children('span.humid').text(humidity);
         parent.children('p.wind').children('span.wind').text(wind);
         parent.children('p.uv').children('span.uv').text(uv);
-
     }
 
     // sets content for each day card
-    function setDay(element, date, icon, temp, humidity) {
+    const setDay = (element, date, icon, temp, humidity) => {
         element.children().children('h5').text(date);
         element.children().children('p.icon').text(icon);
         element.children().children().children('span.temp').text(temp);
@@ -209,12 +217,13 @@ $(document).ready(() => {
     }
 
     // set content for each night card
-    function setNight(element, icon, temp, humidity) {
+    const setNight = (element, icon, temp, humidity) => {
         element.children('p.icon').text(icon);
         element.children().children('span.temp').text(temp);
         element.children().children('span.humidity').text(humidity);
     }
-
+    
+    // start: testing presets
     setCurrent(currentCol, city, time, date, temp, humidity, wind, uv);
     
     setDay(dayOne, date, icon, temp, humidity);
@@ -227,6 +236,7 @@ $(document).ready(() => {
     setNight(nightTwo, icon, temp, humidity);
     setNight(nightThree, icon, temp, humidity);
     setNight(nightFour, icon, temp, humidity);
+    // end: testing presets
 
     const resetFalse = () => {
         currentWeatherPrimary = false;
