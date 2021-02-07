@@ -25,8 +25,8 @@
             <div class="container text-light">
                 <h1 class="display-4">Your Weather</h1>
             </div>
-            <div class="rain front-row"></div>
-            <div class="rain back-row"></div>
+            <!-- <div class="rain front-row"></div>
+            <div class="rain back-row"></div> -->
         </div>
         <div class="container mb-5">
             <div class="row">
@@ -57,22 +57,24 @@
                     <!-- current weather information -->
                     <div class="row">
                         <div id="current-col" class="default-lg-bg my-shadow col-lg-12 col-md-12 col-sm-12 text-light">
-                            <h3 id="day-night"></h3>
+                            <h3 id="city-name" class="p-2"></h3>
+                            <h6 class="float-right">time</h6>
+                            <h4 id="current-date">date</h4>
                             <div class="row">
                                 <div class="col">
+                                    <p class="current-condition">sunny</p>
+                                    <p class="temp"><span class="temp"></span>&degC</p>
+                                    <p class="humid"><span class="humid"></span>% Humidity</p>
+                                    <p class="wind">Wind: <span class="wind"></span> Kph</p>
+                                    <p class="uv">UV Index: <span class="uv"></span></p>
+                                </div>
+                                <!-- <div class="col current-night">
                                     <p>condition</p>
                                     <p>temp</p>
                                     <p>humidity</p>
                                     <p>wind</p>
                                     <p>uv index</p>
-                                </div>
-                                <div class="col current-night">
-                                    <p>condition</p>
-                                    <p>temp</p>
-                                    <p>humidity</p>
-                                    <p>wind</p>
-                                    <p>uv index</p>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -82,70 +84,74 @@
                     <div class="row flex-row justify-content-around pr-2 pl-2 mt-5 five-lg">
                         <div id="day-one" class="card card-day bg-primary my-shadow text-light mt-2 mb-2" >
                             <div class="card-body">
-                                <h5 class="five-day-date card-title">01/29/21</h5>
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
-                                <p class="card-text">87%</p>
+                                <h5 class="five-day-date card-title text-right">01/29/21</h5>
+                                <p class="card-text icon"></p>
+                                <p class="card-text"><span class="temp"></span>&deg C</p>
+                                <p class="card-text"><span class="humidity"></span>%</p>
                             </div>
                         </div>
                         <div id="day-two" class="card card-day bg-primary my-shadow text-light mt-2 mb-2" >
                             <div class="card-body">
-                                <h5 class="five-day-date card-title">01/29/21</h5>
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
-                                <p class="card-text">87%</p>
+                                <h5 class="five-day-date card-title text-right">01/29/21</h5>
+                                <p class="card-text icon"></p>
+                                <p class="card-text"><span class="temp"></span>&deg C</p>
+                                <p class="card-text"><span class="humidity"></span>%</p>
                             </div>
                         </div>
                         <div id="day-three" class="card card-day bg-primary my-shadow text-light mt-2 mb-2" >
                             <div class="card-body">
-                                <h5 class="five-day-date card-title">01/29/21</h5>
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
-                                <p class="card-text">87%</p>
+                                <h5 class="five-day-date card-title text-right">01/29/21</h5>
+                                <p class="card-text icon"></p>
+                                <p class="card-text"><span class="temp"></span>&deg C</p>
+                                <p class="card-text"><span class="humidity"></span>%</p>
                             </div>
                         </div>
                         <div id="day-four" class="card card-day bg-primary my-shadow text-light mt-2 mb-2" >
                             <div class="card-body">
-                                <h5 class="five-day-date card-title">01/29/21</h5>
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
-                                <p class="card-text">87%</p>
+                                <h5 class="five-day-date card-title text-right">01/29/21</h5>
+                                <p class="card-text icon"></p>
+                                <p class="card-text"><span class="temp"></span>&deg C</p>
+                                <p class="card-text"><span class="humidity"></span>%</p>
                             </div>
                         </div>
                         <div id="day-five" class="card card-day bg-primary my-shadow text-light mt-2 mb-2" >
                             <div class="card-body">
-                                <h5 class="five-day-date card-title">01/29/21</h5>
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
-                                <p class="card-text">87%</p>
+                                <h5 class="five-day-date card-title text-right">01/29/21</h5>
+                                <p class="card-text icon"></p>
+                                <p class="card-text"><span class="temp"></span>&deg C</p>
+                                <p class="card-text"><span class="humidity"></span>%</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- row of nighttime cards -->
                     <div class="row row-flex justify-content-around night-temp-row mt-2">
-                        <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
-                            <div class="card-body">
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
+                        <div class="card bg-dark night-shadow text-light mt-2" style="width: 21.5%;">
+                            <div id="night-one" class="card-body">
+                                <p class="card-text icon"></p>
+                                <p class="card-text"><span class="temp"></span>&deg C</p>
+                                <p class="card-text"><span class="humidity"></span>%</p>
                             </div>
                         </div>
-                        <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
-                            <div class="card-body">
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
+                        <div class="card bg-dark night-shadow text-light mt-2" style="width: 21.5%;">
+                            <div id="night-two" class="card-body">
+                                <p class="card-text icon"></p>
+                                <p class="card-text"><span class="temp"></span>&deg C</p>
+                                <p class="card-text"><span class="humidity"></span>%</p>
                             </div>
                         </div>
-                        <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
-                            <div class="card-body">
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
+                        <div class="card bg-dark night-shadow text-light mt-2" style="width: 21.5%;">
+                            <div id="night-three" class="card-body">
+                                <p class="card-text icon"></p>
+                                <p class="card-text"><span class="temp"></span>&deg C</p>
+                                <p class="card-text"><span class="humidity"></span>%</p>
                             </div>
                         </div>
-                        <div class="card bg-dark night-shadow text-light mt-2" style="width: 21%;">
-                            <div class="card-body">
-                                <p class="card-text">icon</p>
-                                <p class="card-text">24&degC</p>
+                        <div class="card bg-dark night-shadow text-light mt-2" style="width: 21.5%;">
+                            <div id="night-four" class="card-body">
+                                <p class="card-text icon"></p>
+                                <p class="card-text"><span class="temp"></span>&deg C</p>
+                                <p class="card-text"><span class="humidity"></span>%</p>
                             </div>
                         </div>
                     </div>
