@@ -1,5 +1,13 @@
 $(document).ready(() => {
     console.log('script ready!');
+    var DateTime = luxon.DateTime;
+    var now = DateTime.local();
+    var parsed = now.toLocaleString(DateTime.DATETIME_MED);
+    console.log(parsed);
+
+
+    // luxon tour:
+        // https://moment.github.io/luxon/docs/manual/tour.html
 
     // start: local storage & btn manipulation functions
     const setLocal = (arr) => {
@@ -379,9 +387,5 @@ $(document).ready(() => {
     $(window).resize(()=> {
         check();
     });
-
-    
-
-    
 
 });
