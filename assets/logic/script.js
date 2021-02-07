@@ -21,6 +21,9 @@ $(document).ready(() => {
     }
 
     const updateList = (arr, el) => {
+        if (arr.length === 10) {
+            arr.shift();
+        }
         if (arr.includes(el)) {
             let index = arr.indexOf(el)
             arr.splice(index,1)
