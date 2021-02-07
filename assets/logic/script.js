@@ -1,12 +1,43 @@
 $(document).ready(() => {
     console.log('script ready!');
+    const updateCities = () => {
+        citiesList = JSON.parse(localStorage.getItem('cities'));
+    }
 
-    var citiesArray = [];
+    // var citiesArray = [];
 
-    localStorage.setItem("cities", JSON.stringify(citiesArray));
+    // localStorage.setItem("cities", JSON.stringify(citiesArray));
 
-    var citiesList = JSON.parse(localStorage.getItem("cities"))
-    console.log(citiesList)
+    var citiesList = JSON.parse(localStorage.getItem('cities')) || [];
+    console.log(citiesList);
+    
+    
+
+    var searchBtn = $('.search-btn');
+    var input = $('.input');
+
+    const setLocal = (arr) => {
+        localStorage.setItem('cities', JSON.stringify(arr));
+
+    };
+
+    const capitalizeFirst = (str) => {
+        let words = str.toLowerCase().split(' '); 
+        // console.log(words);
+        for (var i = 0; i < words.length; i++) {
+            words[i] = words[i].charAt(0).toUpperCase() + words[i].substring(1);
+        }
+        return words.join(' ');
+    }
+
+    
+    // capitalize first letter of each word, set in local storage, clear box
+    searchBtn.on('click', function() {
+        let editedStr = capitalizeFirst(input.val());
+        citiesList.push(editedStr);
+        setLocal(citiesList);
+        input.val('');
+    });
 
 
     
