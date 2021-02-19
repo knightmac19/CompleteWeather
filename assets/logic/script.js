@@ -1,5 +1,6 @@
 $(document).ready(() => {
     console.log('script ready!');
+    var key = '514f23ea8c4787b301667667d5487688';
 
     // start: local storage & btn manipulation functions
     const setLocal = (arr) => {
@@ -44,14 +45,48 @@ $(document).ready(() => {
     var citiesList = JSON.parse(localStorage.getItem('cities')) || [];
     renderBtns(citiesList);
 
-    searchBtn.on('click', function() {
+    searchBtn.on('click', function(e) {
+        e.preventDefault();
         let editedStr = capitalizeFirst(input.val());
+        getCurrentWeather(editedStr);
+
         updateList(citiesList, editedStr);
         setLocal(citiesList);
         cities.children().remove();
         renderBtns(JSON.parse(localStorage.getItem('cities')));
         input.val('');
     });
+
+    $(document).on('click', '.reload', function (e) {
+        e.preventDefault();
+        let thisString = $(this).text();
+        console.log(thisString);
+        getCurrentWeather(thisString);
+        
+        updateList(citiesList, thisString);
+        setLocal(citiesList);
+        cities.children().remove();
+        renderBtns(JSON.parse(localStorage.getItem('cities')));
+    });
+
+
+    const getCurrentWeather = str => {
+        $.ajax({
+            url: `https://api.openweathermap.org/data/2.5/weather?q=${str}&appid=${key}&units=metric`,
+            data: {
+              format: 'json'
+            },
+            error: function(err) {
+              console.log(err);
+            },
+            dataType: 'json',
+            success: function(data) {
+              console.log(data);
+            },
+            type: 'GET'
+        });
+          
+    }
     
     let currentWeatherPrimary = false;
     let dayOnePrimary = false;
