@@ -1,7 +1,5 @@
-import key from './keys';
 $(document).ready(() => {
     console.log('script ready!');
-<<<<<<< HEAD
     var DateTime = luxon.DateTime;
     var now = DateTime.local();
     var parsed = now.toLocaleString(DateTime.DATETIME_MED);
@@ -17,8 +15,6 @@ $(document).ready(() => {
         // https://moment.github.io/luxon/docs/manual/tour.html
     
     // new api key: https://home.openweathermap.org/api_keys
-=======
->>>>>>> parent of 91cf553... adding luxon
 
     // start: local storage & btn manipulation functions
 
@@ -406,9 +402,5 @@ $(document).ready(() => {
     $(window).resize(()=> {
         check();
     });
-
-    
-
-    
 
 });
