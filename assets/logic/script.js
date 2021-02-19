@@ -1,33 +1,7 @@
-import key from './keys';
 $(document).ready(() => {
     console.log('script ready!');
 
-    var DateTime = luxon.DateTime;
-    var now = DateTime.local();
-    var parsed = now.toLocaleString(DateTime.DATETIME_MED);
-    console.log(parsed);
-
-    console.log(key);
-    // one call:
-    // var queryURL = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,daily,alerts&appid=${key}&units=metric&lang=en`
-
-
-    
-    // luxon tour:
-        // https://moment.github.io/luxon/docs/manual/tour.html
-    
-    // new api key: https://home.openweathermap.org/api_keys
-
-
     // start: local storage & btn manipulation functions
-
-    const getCurrent = (URL) => {
-        $.ajax({
-            url: URL, 
-
-        })
-    }
-
     const setLocal = (arr) => {
         localStorage.setItem('cities', JSON.stringify(arr));
     };
