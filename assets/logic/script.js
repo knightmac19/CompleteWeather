@@ -1,6 +1,8 @@
 $(document).ready(() => {
     console.log('script ready!');
     var key = '514f23ea8c4787b301667667d5487688';
+    var currentCol = $('#current-col');
+    currentCol.hide();
 
     // start: local storage & btn manipulation functions
     const setLocal = (arr) => {
@@ -47,6 +49,7 @@ $(document).ready(() => {
 
     searchBtn.on('click', function(e) {
         e.preventDefault();
+        currentCol.show();
         let editedStr = capitalizeFirst(input.val());
         getCurrentWeather(editedStr);
 
@@ -59,6 +62,7 @@ $(document).ready(() => {
 
     $(document).on('click', '.reload', function (e) {
         e.preventDefault();
+        currentCol.show();
         let thisString = $(this).text();
         console.log(thisString);
         getCurrentWeather(thisString);
@@ -82,11 +86,21 @@ $(document).ready(() => {
             dataType: 'json',
             success: function(data) {
               console.log(data);
+              setCurrent(currentCol, data.name, data.main.temp, data.weather[0].main, data.main.feels_like, data.main.humidity, data.wind.speed, 2.13);
             },
             type: 'GET'
         });
           
     }
+
+    // const writeDate = (dt) => {
+    //     let milliseconds = dt * 1000;
+    //     let dateObject = new Date(milliseconds);
+        
+    //     return dateObject.toLocaleString("en-US", {timeZoneName: "short"}); 
+    //     // 12/9/2019, 10:30:15 AM CST    
+    //     // https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript
+    // }
     
     let currentWeatherPrimary = false;
     let dayOnePrimary = false;
@@ -98,7 +112,7 @@ $(document).ready(() => {
     var currentNight = $('.current-night');
     var cities = $('#cities');
 
-    var currentCol = $('#current-col');
+    
     // grab five-day cards for content manipulation
     var dayOne = $('#day-one');
     var dayTwo = $('#day-two');
@@ -233,14 +247,14 @@ $(document).ready(() => {
     var date = '2/6/21'
 
     // set content for current weather card
-    const setCurrent = (element, city, time, date, temp, humidity, wind, uv) => {
-        element.children('h3').text(city);
-        element.children('h6').text(time);
-        element.children('h4').text(date);
+    const setCurrent = (element, city, actual, icon, feels, humidity, wind, uv) => {
+        element.children('h2').text(city);
+        // element.children('h6').text(time);
+        element.children('h4').children('span.actual').text(actual);
 
         let parent = element.children('div.row').children();
         parent.children('p.current-condition').text(icon);
-        parent.children('p.temp').children('span.temp').text(temp);
+        parent.children('p.feels').children('span.feels').text(feels);
         parent.children('p.humid').children('span.humid').text(humidity);
         parent.children('p.wind').children('span.wind').text(wind);
         parent.children('p.uv').children('span.uv').text(uv);
@@ -262,7 +276,7 @@ $(document).ready(() => {
     }
     
     // start: testing presets
-    setCurrent(currentCol, city, time, date, temp, humidity, wind, uv);
+    // setCurrent(currentCol, '', '', '', '', '', '', '');
     
     setDay(dayOne, date, icon, temp, humidity);
     setDay(dayTwo, date, icon, temp, humidity);
