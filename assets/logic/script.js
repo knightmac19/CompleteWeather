@@ -2,7 +2,11 @@ $(document).ready(() => {
     console.log('script ready!');
     var key = '514f23ea8c4787b301667667d5487688';
     var currentCol = $('#current-col');
+    var nightTemp = $('.night-temp-row');
+    var fiveLg = $('.five-lg');
     currentCol.hide();
+    nightTemp.hide();
+    fiveLg.hide();
 
     // start: local storage & btn manipulation functions
     const setLocal = (arr) => {
