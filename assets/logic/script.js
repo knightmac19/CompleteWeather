@@ -79,6 +79,7 @@ $(document).ready(() => {
 
 
     const getCurrentWeather = str => {
+
         $.ajax({
             url: `https://api.openweathermap.org/data/2.5/weather?q=${str}&appid=${key}&units=metric`,
             data: {
@@ -90,20 +91,34 @@ $(document).ready(() => {
             dataType: 'json',
             success: function(data) {
               console.log(data);
-              setCurrent(currentCol, data.name, data.main.temp, data.weather[0].main, data.main.feels_like, data.main.humidity, data.wind.speed, 2.13);
+              setCurrent(currentCol, data.name, writeDate(data.dt), data.main.temp, data.weather[0].main, data.main.feels_like, data.main.humidity, data.wind.speed, 2.13);
             },
             type: 'GET'
         });
           
     }
 
-    // const writeDate = (dt) => {
+    const writeDate = (dt) => {
+        let milliseconds = dt * 1000;
+        let dateObject = new Date(milliseconds);
+        
+        let month = dateObject.toLocaleString("en-US", {month: "short"});
+        let day = dateObject.toLocaleString("en-US", {day: "numeric"});
+        let year = dateObject.toLocaleString("en-US", {year: "numeric"});
+        
+        let longDate = month + ' ' + day + ' ' + year;
+
+        return longDate;
+    }
+
+    // const writeTime = (dt) => {
     //     let milliseconds = dt * 1000;
     //     let dateObject = new Date(milliseconds);
-        
-    //     return dateObject.toLocaleString("en-US", {timeZoneName: "short"}); 
-    //     // 12/9/2019, 10:30:15 AM CST    
-    //     // https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript
+
+    //     let time = dateObject.toLocaleString("en-US").substring(11);
+    //     let timeZone = dateObject.toLocaleString("en-US", {timeZoneName: "short"}).substring(11);  
+    
+    //     return time;
     // }
     
     let currentWeatherPrimary = false;
@@ -251,9 +266,9 @@ $(document).ready(() => {
     var date = '2/6/21'
 
     // set content for current weather card
-    const setCurrent = (element, city, actual, icon, feels, humidity, wind, uv) => {
+    const setCurrent = (element, city, date, actual, icon, feels, humidity, wind, uv) => {
         element.children('h2').text(city);
-        // element.children('h6').text(time);
+        element.children('h4.date').text(date);
         element.children('h4').children('span.actual').text(actual);
 
         let parent = element.children('div.row').children();
