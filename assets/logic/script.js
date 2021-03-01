@@ -91,35 +91,51 @@ $(document).ready(() => {
             dataType: 'json',
             success: function(data) {
               console.log(data);
-              setCurrent(currentCol, data.name, writeDate(data.dt), data.main.temp, data.weather[0].main, data.main.feels_like, data.main.humidity, data.wind.speed, 2.13);
+              setCurrent(currentCol, data.name, localDate(data.timezone).current, data.main.temp, data.weather[0].main, data.main.feels_like, data.main.humidity, data.wind.speed, 2.13);
             },
             type: 'GET'
+        }).then(data => {
+            // call five day data
+            setDay(dayOne, localDate(data.timezone).one, icon, temp, humidity);
+            setDay(dayTwo, localDate(data.timezone).two, icon, temp, humidity);
+            setDay(dayThree, localDate(data.timezone).three, icon, temp, humidity);
+            setDay(dayFour, localDate(data.timezone).four, icon, temp, humidity);
+            setDay(dayFive, localDate(data.timezone).five, icon, temp, humidity);
+
+            setNight(nightOne, icon, temp, humidity);
+            setNight(nightTwo, icon, temp, humidity);
+            setNight(nightThree, icon, temp, humidity);
+            setNight(nightFour, icon, temp, humidity);
+
+        }).then(res => {
+            // set five day results
+            // then show five day/night cards
+            fiveLg.show();
+            nightTemp.show();
+        }).catch(err => {
+            console.log(err);
         });
           
     }
 
-    const writeDate = (dt) => {
-        let milliseconds = dt * 1000;
-        let dateObject = new Date(milliseconds);
-        
-        let month = dateObject.toLocaleString("en-US", {month: "short"});
-        let day = dateObject.toLocaleString("en-US", {day: "numeric"});
-        let year = dateObject.toLocaleString("en-US", {year: "numeric"});
-        
-        let longDate = month + ' ' + day + ' ' + year;
+    const localDate = (zone) => {
+        let unixEpochTimeStamp = Date.parse(new Date(Date.now()));
+        let timeZone = zone * 1000;
+        let combined = unixEpochTimeStamp + timeZone;
 
-        return longDate;
+        let dayInMilliseconds = 24 * 60 * 60 * 1000;
+
+        let result = {
+            current: new Date(combined).toDateString().substring(4),
+            one: new Date(combined + (dayInMilliseconds * 1)).toLocaleDateString(),
+            two: new Date(combined + (dayInMilliseconds * 2)).toLocaleDateString(),
+            three: new Date(combined + (dayInMilliseconds * 3)).toLocaleDateString(),
+            four: new Date(combined + (dayInMilliseconds * 4)).toLocaleDateString(),
+            five: new Date(combined + (dayInMilliseconds * 5)).toLocaleDateString()
+        }
+
+        return result;
     }
-
-    // const writeTime = (dt) => {
-    //     let milliseconds = dt * 1000;
-    //     let dateObject = new Date(milliseconds);
-
-    //     let time = dateObject.toLocaleString("en-US").substring(11);
-    //     let timeZone = dateObject.toLocaleString("en-US", {timeZoneName: "short"}).substring(11);  
-    
-    //     return time;
-    // }
     
     let currentWeatherPrimary = false;
     let dayOnePrimary = false;
@@ -297,16 +313,16 @@ $(document).ready(() => {
     // start: testing presets
     // setCurrent(currentCol, '', '', '', '', '', '', '');
     
-    setDay(dayOne, date, icon, temp, humidity);
-    setDay(dayTwo, date, icon, temp, humidity);
-    setDay(dayThree, date, icon, temp, humidity);
-    setDay(dayFour, date, icon, temp, humidity);
-    setDay(dayFive, date, icon, temp, humidity);
+    // setDay(dayOne, date, icon, temp, humidity);
+    // setDay(dayTwo, date, icon, temp, humidity);
+    // setDay(dayThree, date, icon, temp, humidity);
+    // setDay(dayFour, date, icon, temp, humidity);
+    // setDay(dayFive, date, icon, temp, humidity);
 
-    setNight(nightOne, icon, temp, humidity);
-    setNight(nightTwo, icon, temp, humidity);
-    setNight(nightThree, icon, temp, humidity);
-    setNight(nightFour, icon, temp, humidity);
+    // setNight(nightOne, icon, temp, humidity);
+    // setNight(nightTwo, icon, temp, humidity);
+    // setNight(nightThree, icon, temp, humidity);
+    // setNight(nightFour, icon, temp, humidity);
     // end: testing presets
 
     const resetFalse = () => {
