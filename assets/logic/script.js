@@ -105,35 +105,43 @@ $(document).ready(() => {
             type: 'GET'
         }).then(data => {
 
-            // $.ajax({
-            //     url:`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${key}&units=metric`,
-            //     data: {
-            //         format: 'json'
-            //     },
-            //     error: function(err) {
-            //         console.log(err);
-            //     },
-            //     dataType: 'json',
-            //     success: function(data) {
-            //         console.log('five day: ')
-            //         console.log(data)
-            //     }
-            // })
+            $.ajax({
+                url:`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${key}&units=metric`,
+                data: {
+                    format: 'json'
+                },
+                error: function(err) {
+                    console.log(err);
+                },
+                dataType: 'json',
+                success: function(data) {
+                    console.log('five day: ')
+                    console.log(data)
 
+                    let firstDay = data.list[4];
+                    let secondDay = data.list[12];
+                    let thirdDay = data.list[20];
+                    let fourthDay = data.list[28];
+                    let fifthDay = data.list[36];
 
+                    let firstNight = data.list[8]; 
+                    let secondNight = data.list[16];
+                    let thirdNight = data.list[24];
+                    let fourthNight = data.list[32];
 
-            // call five day data
-            setDay(dayOne, localDate(data.timezone).one, icon, 12, humidity);
-            setDay(dayTwo, localDate(data.timezone).two, icon, temp, humidity);
-            setDay(dayThree, localDate(data.timezone).three, icon, temp, humidity);
-            setDay(dayFour, localDate(data.timezone).four, icon, temp, humidity);
-            setDay(dayFive, localDate(data.timezone).five, icon, temp, humidity);
+                    setDay(dayOne, localDate(data.city.timezone).one, firstDay.weather[0].main, firstDay.main.temp, firstDay.main.humidity);
+                    setDay(dayTwo, localDate(data.city.timezone).two, secondDay.weather[0].main, secondDay.main.temp, secondDay.main.humidity);
+                    setDay(dayThree, localDate(data.city.timezone).three, thirdDay.weather[0].main, thirdDay.main.temp, thirdDay.main.humidity);
+                    setDay(dayFour, localDate(data.city.timezone).four, fourthDay.weather[0].main, fourthDay.main.temp, fourthDay.main.humidity);
+                    setDay(dayFive, localDate(data.city.timezone).five, fifthDay.weather[0].main, fifthDay.main.temp, fifthDay.main.humidity);
 
-            setNight(nightOne, icon, temp, humidity);
-            setNight(nightTwo, icon, temp, humidity);
-            setNight(nightThree, icon, temp, humidity);
-            setNight(nightFour, icon, temp, humidity);
-
+                    setNight(nightOne, firstNight.weather[0].main, firstNight.main.temp, firstNight.main.humidity);
+                    setNight(nightTwo, secondNight.weather[0].main, secondNight.main.temp, secondNight.main.humidity);
+                    setNight(nightThree, thirdNight.weather[0].main, thirdNight.main.temp, thirdNight.main.humidity);
+                    setNight(nightFour, fourthNight.weather[0].main, fourthNight.main.temp, fourthNight.main.humidity);
+                }
+            })
+            
         }).then(res => {
             // set five day results
             // then show five day/night cards
@@ -317,10 +325,10 @@ $(document).ready(() => {
         element.children('h4').children('span.actual').text(actual);
 
         let parent = element.children('div.row').children();
-        parent.children('p.current-condition').text(icon);
-        parent.children('p.feels').children('span.feels').text(feels);
-        parent.children('p.humid').children('span.humid').text(humidity);
-        parent.children('p.wind').children('span.wind').text(wind);
+        parent.children('h6.current-condition').text(icon);
+        parent.children('h6.feels').children('span.feels').text(feels);
+        parent.children('h6.humid').children('span.humid').text(humidity);
+        parent.children('h6.wind').children('span.wind').text(wind);
     }
 
     // sets content for each day card
@@ -377,7 +385,7 @@ $(document).ready(() => {
     } else {
         $('.card-day').each(function() {
             // console.log($(this));
-            $(this).css('width','18%');
+            $(this).css('width','18.75%');
         });
         currentNight.addClass('text-center');
     }
@@ -402,7 +410,7 @@ $(document).ready(() => {
             resetFalse();
             $('.card-day').each(function() {
                 // console.log($(this));
-                $(this).css('width','18%');
+                $(this).css('width','18.75%');
                 $(this).removeClass('five-day five-night').addClass('bg-primary');
             });
             currentCol.removeClass('night-background day-background').addClass('default-lg-bg');
