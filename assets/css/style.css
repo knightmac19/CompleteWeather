@@ -115,7 +115,7 @@ main {
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 601px) {
     .five-day-date {
-        display: none;
+        display: block;
     }
 }
 

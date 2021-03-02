@@ -68,7 +68,7 @@ $(document).ready(() => {
         e.preventDefault();
         currentCol.show();
         let thisString = $(this).text();
-        console.log(thisString);
+        // console.log(thisString);
         getCurrentWeather(thisString);
         
         updateList(citiesList, thisString);
@@ -90,13 +90,40 @@ $(document).ready(() => {
             },
             dataType: 'json',
             success: function(data) {
-              console.log(data);
-              setCurrent(currentCol, data.name, localDate(data.timezone).current, data.main.temp, data.weather[0].main, data.main.feels_like, data.main.humidity, data.wind.speed, 2.13);
+            //   console.log(data);
+              setCurrent(
+                  currentCol,
+                  data.name,
+                  localDate(data.timezone).current,
+                  data.main.temp,
+                  data.weather[0].main,
+                  data.main.feels_like,
+                  data.main.humidity,
+                  data.wind.speed
+                );
             },
             type: 'GET'
         }).then(data => {
+
+            // $.ajax({
+            //     url:`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${key}&units=metric`,
+            //     data: {
+            //         format: 'json'
+            //     },
+            //     error: function(err) {
+            //         console.log(err);
+            //     },
+            //     dataType: 'json',
+            //     success: function(data) {
+            //         console.log('five day: ')
+            //         console.log(data)
+            //     }
+            // })
+
+
+
             // call five day data
-            setDay(dayOne, localDate(data.timezone).one, icon, temp, humidity);
+            setDay(dayOne, localDate(data.timezone).one, icon, 12, humidity);
             setDay(dayTwo, localDate(data.timezone).two, icon, temp, humidity);
             setDay(dayThree, localDate(data.timezone).three, icon, temp, humidity);
             setDay(dayFour, localDate(data.timezone).four, icon, temp, humidity);
@@ -127,11 +154,16 @@ $(document).ready(() => {
 
         let result = {
             current: new Date(combined).toDateString().substring(4),
-            one: new Date(combined + (dayInMilliseconds * 1)).toLocaleDateString(),
-            two: new Date(combined + (dayInMilliseconds * 2)).toLocaleDateString(),
-            three: new Date(combined + (dayInMilliseconds * 3)).toLocaleDateString(),
-            four: new Date(combined + (dayInMilliseconds * 4)).toLocaleDateString(),
-            five: new Date(combined + (dayInMilliseconds * 5)).toLocaleDateString()
+            // one: new Date(combined + (dayInMilliseconds * 1)).toLocaleDateString(),
+            // two: new Date(combined + (dayInMilliseconds * 2)).toLocaleDateString(),
+            // three: new Date(combined + (dayInMilliseconds * 3)).toLocaleDateString(),
+            // four: new Date(combined + (dayInMilliseconds * 4)).toLocaleDateString(),
+            // five: new Date(combined + (dayInMilliseconds * 5)).toLocaleDateString()
+            one: new Date(combined + (dayInMilliseconds * 1)).toDateString().substring(4 , 11),
+            two: new Date(combined + (dayInMilliseconds * 2)).toDateString().substring(4 , 11),
+            three: new Date(combined + (dayInMilliseconds * 3)).toDateString().substring(4 , 11),
+            four: new Date(combined + (dayInMilliseconds * 4)).toDateString().substring(4 , 11),
+            five: new Date(combined + (dayInMilliseconds * 5)).toDateString().substring(4 , 11)
         }
 
         return result;
@@ -174,14 +206,12 @@ $(document).ready(() => {
         day: {
             temp: '',
             humidity: '',
-            wind: '',
-            uvIndex: ''
+            wind: ''
         },
         night: {
             temp: '',
             humidity: '',
-            wind: '',
-            uvIndex: ''
+            wind: ''
         }
     }
 
@@ -276,13 +306,12 @@ $(document).ready(() => {
     var temp = '17';
     var humidity = '55';
     var wind = '15';
-    var uv = '2.63';
     var city = 'Queretaro';
     var time = 'now'
     var date = '2/6/21'
 
     // set content for current weather card
-    const setCurrent = (element, city, date, actual, icon, feels, humidity, wind, uv) => {
+    const setCurrent = (element, city, date, actual, icon, feels, humidity, wind) => {
         element.children('h2').text(city);
         element.children('h4.date').text(date);
         element.children('h4').children('span.actual').text(actual);
@@ -292,12 +321,11 @@ $(document).ready(() => {
         parent.children('p.feels').children('span.feels').text(feels);
         parent.children('p.humid').children('span.humid').text(humidity);
         parent.children('p.wind').children('span.wind').text(wind);
-        parent.children('p.uv').children('span.uv').text(uv);
     }
 
     // sets content for each day card
     const setDay = (element, date, icon, temp, humidity) => {
-        element.children().children('h5').text(date);
+        element.children('.card-header').children('p.text-center').text(date);
         element.children().children('p.icon').text(icon);
         element.children().children().children('span.temp').text(temp);
         element.children().children().children('span.humidity').text(humidity);
@@ -434,7 +462,7 @@ $(document).ready(() => {
     });
 
     dayFour.on('click', function() {
-        console.log($(this).children().children('p.icon').text('hello'));
+        // console.log($(this).children().children('p.icon').text('hello'));
         if (window.innerWidth <= 600) {
             if (dayFourPrimary) {
                 $('#day-four').removeClass('bg-primary five-night').addClass('five-day');
