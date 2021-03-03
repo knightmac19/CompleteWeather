@@ -54,13 +54,8 @@ $(document).ready(() => {
     searchBtn.on('click', function(e) {
         e.preventDefault();
         currentCol.show();
-        let editedStr = capitalizeFirst(input.val());
+        let editedStr = capitalizeFirst(input.val().trim());
         getCurrentWeather(editedStr);
-
-        updateList(citiesList, editedStr);
-        setLocal(citiesList);
-        cities.children().remove();
-        renderBtns(JSON.parse(localStorage.getItem('cities')));
         input.val('');
     });
 
@@ -90,7 +85,13 @@ $(document).ready(() => {
             },
             dataType: 'json',
             success: function(data) {
-            //   console.log(data);
+              console.log(data);
+              
+              updateList(citiesList, data.name);
+              setLocal(citiesList);
+              cities.children().remove();
+              renderBtns(JSON.parse(localStorage.getItem('cities')));
+
               setCurrent(
                   currentCol,
                   data.name,
@@ -115,8 +116,8 @@ $(document).ready(() => {
                 },
                 dataType: 'json',
                 success: function(data) {
-                    console.log('five day: ')
-                    console.log(data)
+                    // console.log('five day: ')
+                    // console.log(data)
 
                     let firstDay = data.list[4];
                     let secondDay = data.list[12];
