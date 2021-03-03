@@ -113,10 +113,9 @@ $(document).ready(() => {
                   currentCol,
                   data.name,
                   localDate(data.timezone).current,
-                  data.main.temp,
-
+                  Math.round(data.main.temp),
                   data.weather[0].icon,
-                  data.main.feels_like,
+                  Math.round(data.main.feels_like),
                   data.main.humidity,
                   data.wind.speed
                 );
@@ -148,16 +147,16 @@ $(document).ready(() => {
                     let thirdNight = data.list[24];
                     let fourthNight = data.list[32];
 
-                    setDay(dayOne, localDate(data.city.timezone).one, firstDay.weather[0].icon, firstDay.main.temp, firstDay.main.humidity);
-                    setDay(dayTwo, localDate(data.city.timezone).two, secondDay.weather[0].icon, secondDay.main.temp, secondDay.main.humidity);
-                    setDay(dayThree, localDate(data.city.timezone).three, thirdDay.weather[0].icon, thirdDay.main.temp, thirdDay.main.humidity);
-                    setDay(dayFour, localDate(data.city.timezone).four, fourthDay.weather[0].icon, fourthDay.main.temp, fourthDay.main.humidity);
-                    setDay(dayFive, localDate(data.city.timezone).five, fifthDay.weather[0].icon, fifthDay.main.temp, fifthDay.main.humidity);
+                    setDay(dayOne, localDate(data.city.timezone).one, firstDay.weather[0].icon, Math.round(firstDay.main.temp), firstDay.main.humidity);
+                    setDay(dayTwo, localDate(data.city.timezone).two, secondDay.weather[0].icon, Math.round(secondDay.main.temp), secondDay.main.humidity);
+                    setDay(dayThree, localDate(data.city.timezone).three, thirdDay.weather[0].icon, Math.round(thirdDay.main.temp), thirdDay.main.humidity);
+                    setDay(dayFour, localDate(data.city.timezone).four, fourthDay.weather[0].icon, Math.round(fourthDay.main.temp), fourthDay.main.humidity);
+                    setDay(dayFive, localDate(data.city.timezone).five, fifthDay.weather[0].icon, Math.round(fifthDay.main.temp), fifthDay.main.humidity);
 
-                    setNight(nightOne, firstNight.weather[0].main, firstNight.main.temp, firstNight.main.humidity);
-                    setNight(nightTwo, secondNight.weather[0].main, secondNight.main.temp, secondNight.main.humidity);
-                    setNight(nightThree, thirdNight.weather[0].main, thirdNight.main.temp, thirdNight.main.humidity);
-                    setNight(nightFour, fourthNight.weather[0].main, fourthNight.main.temp, fourthNight.main.humidity);
+                    setNight(nightOne, firstNight.weather[0].main, Math.round(firstNight.main.temp), firstNight.main.humidity);
+                    setNight(nightTwo, secondNight.weather[0].main, Math.round(secondNight.main.temp), secondNight.main.humidity);
+                    setNight(nightThree, thirdNight.weather[0].main, Math.round(thirdNight.main.temp), thirdNight.main.humidity);
+                    setNight(nightFour, fourthNight.weather[0].main, Math.round(fourthNight.main.temp), fourthNight.main.humidity);
                 }
             })
             
@@ -404,7 +403,7 @@ $(document).ready(() => {
     } else {
         $('.card-day').each(function() {
             // console.log($(this));
-            $(this).css('width','18.75%');
+            $(this).css('width','18%');
         });
         currentNight.addClass('text-center');
     }
@@ -429,7 +428,7 @@ $(document).ready(() => {
             resetFalse();
             $('.card-day').each(function() {
                 // console.log($(this));
-                $(this).css('width','18.75%');
+                $(this).css('width','18%');
                 $(this).removeClass('five-day five-night').addClass('bg-primary');
             });
             currentCol.removeClass('night-background day-background').addClass('default-lg-bg');
