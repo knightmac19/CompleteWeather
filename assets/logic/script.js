@@ -9,7 +9,7 @@ $(document).ready(() => {
     // pageError.hide();
 
     currentCol.hide();
-    nightTemp.hide();
+    // nightTemp.hide();
     fiveLg.hide();
 
     // start: local storage & btn manipulation functions
@@ -158,13 +158,12 @@ $(document).ready(() => {
                     setNight(nightThree, thirdNight.weather[0].main, Math.round(thirdNight.main.temp), thirdNight.main.humidity);
                     setNight(nightFour, fourthNight.weather[0].main, Math.round(fourthNight.main.temp), fourthNight.main.humidity);
                 }
+            }).then(res => {
+                fiveLg.show();
+            }).catch(err => {
+                console.log(err);
             })
             
-        }).then(res => {
-            // set five day results
-            // then show five day/night cards
-            fiveLg.show();
-            nightTemp.show();
         }).catch(err => {
             console.log(err);
         });
