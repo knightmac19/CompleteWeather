@@ -4,6 +4,7 @@ $(document).ready(() => {
     var currentCol = $('#current-col');
     var nightTemp = $('.night-temp-row');
     var fiveLg = $('.five-lg');
+    var modal = $('#exampleModal');
     // var pageError = $('#error-msg');
     // var errorContainer = $('#error-container');
     // pageError.hide();
@@ -86,19 +87,9 @@ $(document).ready(() => {
             },
             error: function(err) {
               console.log(err);
-            //   pageError.show();
-            //   errorContainer.hide();
-            //   currentCol.show();
-            setCurrent(
-                currentCol,
-                'No Weather Data',
-                '',
-                '',
-                '',
-                '',
-                '',
-                ''
-            )
+                modal.modal({
+                    show: true
+                })
             },
             dataType: 'json',
             success: function(data) {
