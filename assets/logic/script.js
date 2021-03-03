@@ -4,6 +4,10 @@ $(document).ready(() => {
     var currentCol = $('#current-col');
     var nightTemp = $('.night-temp-row');
     var fiveLg = $('.five-lg');
+    // var pageError = $('#error-msg');
+    // var errorContainer = $('#error-container');
+    // pageError.hide();
+
     currentCol.hide();
     nightTemp.hide();
     fiveLg.hide();
@@ -82,6 +86,19 @@ $(document).ready(() => {
             },
             error: function(err) {
               console.log(err);
+            //   pageError.show();
+            //   errorContainer.hide();
+            //   currentCol.show();
+            setCurrent(
+                currentCol,
+                'No Weather Data',
+                '',
+                '',
+                '',
+                '',
+                '',
+                ''
+            )
             },
             dataType: 'json',
             success: function(data) {
