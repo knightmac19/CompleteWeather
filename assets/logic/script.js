@@ -114,7 +114,8 @@ $(document).ready(() => {
                   data.name,
                   localDate(data.timezone).current,
                   data.main.temp,
-                  data.weather[0].main,
+
+                  data.weather[0].icon,
                   data.main.feels_like,
                   data.main.humidity,
                   data.wind.speed
@@ -147,11 +148,11 @@ $(document).ready(() => {
                     let thirdNight = data.list[24];
                     let fourthNight = data.list[32];
 
-                    setDay(dayOne, localDate(data.city.timezone).one, firstDay.weather[0].main, firstDay.main.temp, firstDay.main.humidity);
-                    setDay(dayTwo, localDate(data.city.timezone).two, secondDay.weather[0].main, secondDay.main.temp, secondDay.main.humidity);
-                    setDay(dayThree, localDate(data.city.timezone).three, thirdDay.weather[0].main, thirdDay.main.temp, thirdDay.main.humidity);
-                    setDay(dayFour, localDate(data.city.timezone).four, fourthDay.weather[0].main, fourthDay.main.temp, fourthDay.main.humidity);
-                    setDay(dayFive, localDate(data.city.timezone).five, fifthDay.weather[0].main, fifthDay.main.temp, fifthDay.main.humidity);
+                    setDay(dayOne, localDate(data.city.timezone).one, firstDay.weather[0].icon, firstDay.main.temp, firstDay.main.humidity);
+                    setDay(dayTwo, localDate(data.city.timezone).two, secondDay.weather[0].icon, secondDay.main.temp, secondDay.main.humidity);
+                    setDay(dayThree, localDate(data.city.timezone).three, thirdDay.weather[0].icon, thirdDay.main.temp, thirdDay.main.humidity);
+                    setDay(dayFour, localDate(data.city.timezone).four, fourthDay.weather[0].icon, fourthDay.main.temp, fourthDay.main.humidity);
+                    setDay(dayFive, localDate(data.city.timezone).five, fifthDay.weather[0].icon, fifthDay.main.temp, fifthDay.main.humidity);
 
                     setNight(nightOne, firstNight.weather[0].main, firstNight.main.temp, firstNight.main.humidity);
                     setNight(nightTwo, secondNight.weather[0].main, secondNight.main.temp, secondNight.main.humidity);
@@ -343,7 +344,7 @@ $(document).ready(() => {
         element.children('h4').children('span.actual').text(actual);
 
         let parent = element.children('div.row').children();
-        parent.children('h6.current-condition').text(icon);
+        parent.children('img.current-condition').attr('src', `http://openweathermap.org/img/wn/${icon}@2x.png`);
         parent.children('h6.feels').children('span.feels').text(feels);
         parent.children('h6.humid').children('span.humid').text(humidity);
         parent.children('h6.wind').children('span.wind').text(wind);
@@ -352,7 +353,7 @@ $(document).ready(() => {
     // sets content for each day card
     const setDay = (element, date, icon, temp, humidity) => {
         element.children('.card-header').children('p.text-center').text(date);
-        element.children().children('p.icon').text(icon);
+        element.children().children('img.icon').attr('src', `http://openweathermap.org/img/wn/${icon}.png`);
         element.children().children().children('span.temp').text(temp);
         element.children().children().children('span.humidity').text(humidity);
     }
