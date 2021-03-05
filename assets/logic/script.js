@@ -559,16 +559,6 @@ $(document).ready(() => {
         }
     }
 
-
-    var icon = 'cloudy';
-    var date = '2/6/21';
-    var temp = '17';
-    var humidity = '55';
-    var wind = '15';
-    var city = 'Queretaro';
-    var time = 'now'
-    var date = '2/6/21'
-
     // set content for current weather card
     const setCurrent = (element, city, date, actual, icon, feels, humidity, wind) => {
         element.children('h2').text(city);
@@ -584,7 +574,7 @@ $(document).ready(() => {
 
     // sets content for each day card
     const setDay = (element, date, icon, condition, temp, humidity) => {
-        element.children('.card-header').children('p.text-center').text(date);
+        element.children('.card-header').children('h6.text-center').text(date);
         element.children().children('img.icon').attr('src', `http://openweathermap.org/img/wn/${icon}.png`);
         element.children().children('p.condition').text(condition);
         element.children().children().children('span.temp').text(temp);
@@ -598,21 +588,6 @@ $(document).ready(() => {
         element.children().children('span.temp').text(temp);
         element.children().children('span.humidity').text(humidity);
     }
-    
-    // start: testing presets
-    // setCurrent(currentCol, '', '', '', '', '', '', '');
-    
-    // setDay(dayOne, date, icon, temp, humidity);
-    // setDay(dayTwo, date, icon, temp, humidity);
-    // setDay(dayThree, date, icon, temp, humidity);
-    // setDay(dayFour, date, icon, temp, humidity);
-    // setDay(dayFive, date, icon, temp, humidity);
-
-    // setNight(nightOne, icon, temp, humidity);
-    // setNight(nightTwo, icon, temp, humidity);
-    // setNight(nightThree, icon, temp, humidity);
-    // setNight(nightFour, icon, temp, humidity);
-    // end: testing presets
 
     const resetFalse = () => {
         currentWeatherPrimary = false;
@@ -638,7 +613,7 @@ $(document).ready(() => {
     } else {
         $('.card-day').each(function() {
             // console.log($(this));
-            $(this).css('width','18%');
+            $(this).css('width','22%');
         });
         currentNight.addClass('text-center');
     }
@@ -663,7 +638,7 @@ $(document).ready(() => {
             resetFalse();
             $('.card-day').each(function() {
                 // console.log($(this));
-                $(this).css('width','18%');
+                $(this).css('width','22%');
                 $(this).removeClass('five-day five-night').addClass('bg-primary');
             });
             currentCol.removeClass('night-background day-background').addClass('default-lg-bg');
@@ -739,18 +714,18 @@ $(document).ready(() => {
         return;
     });
 
-    dayFive.on('click', function() {
-        if (window.innerWidth <= 600) {
-            if (dayFivePrimary) {
-                $('#day-five').removeClass('bg-primary five-day').addClass('five-night');
-                dayFivePrimary = false;        
-            } else {
-                $('#day-five').removeClass('five-night').addClass('five-day');
-                dayFivePrimary = true;
-            }
-        }
-        return;
-    });
+    // dayFive.on('click', function() {
+    //     if (window.innerWidth <= 600) {
+    //         if (dayFivePrimary) {
+    //             $('#day-five').removeClass('bg-primary five-day').addClass('five-night');
+    //             dayFivePrimary = false;        
+    //         } else {
+    //             $('#day-five').removeClass('five-night').addClass('five-day');
+    //             dayFivePrimary = true;
+    //         }
+    //     }
+    //     return;
+    // });
 
     $(window).resize(()=> {
         check();
