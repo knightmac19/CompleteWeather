@@ -367,7 +367,6 @@ $(document).ready(() => {
         return result;
     }
 
-    let currentWeatherPrimary = false;
     let dayOnePrimary = true;
     let dayTwoPrimary = true;
     let dayThreePrimary = true;
@@ -670,23 +669,6 @@ $(document).ready(() => {
             currentCol.removeClass('night-background day-background').addClass('default-lg-bg');
         }
     };
-
-    currentCol.on('click', function() {
-        if (window.innerWidth <= 600) {
-            if (currentWeatherPrimary) {
-                currentCol.removeClass('default-lg-bg night-background').addClass('day-background');
-                currentWeatherPrimary = false;        
-            } else {
-                currentCol.removeClass('default-lg-bg day-background').addClass('night-background');
-                currentWeatherPrimary = true;
-            }
-        }
-        return;
-    });
-
-    // when this loads, 
-        // dayOnePrimay is false
-        // set day one card with daysForecast.one.date, 
 
     dayOne.on('click', function() {
         if (window.innerWidth <= 600) {
