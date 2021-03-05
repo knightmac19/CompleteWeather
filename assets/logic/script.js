@@ -161,6 +161,8 @@ $(document).ready(() => {
                         four: localDate(data.city.timezone).four.toISOString().substring(0,10),
                         five: localDate(data.city.timezone).five.toISOString().substring(0,10),
                     }
+                    console.log('date five')
+                    console.log(dateObj.five)
 
                     let firstDay = list.filter(obj => {
                         if (indexOfDate(list, `${dateObj.one} 12:00:00`)) {
@@ -177,6 +179,8 @@ $(document).ready(() => {
                             return obj.dt_txt === `${dateObj.one} 17:00:00`;
                         }
                     });
+                    console.log('first day')
+                    console.log(firstDay)
                     let secondDay = list.filter(obj => {
                         if (indexOfDate(list, `${dateObj.two} 12:00:00`)) {
                             return obj.dt_txt === `${dateObj.two} 12:00:00`;
@@ -294,10 +298,13 @@ $(document).ready(() => {
                             return obj.dt_txt === `${dateObj.five} 03:00:00`;
                         } else if (indexOfDate(list, `${dateObj.five} 04:00:00`)) {
                             return obj.dt_txt === `${dateObj.five} 04:00:00`;
-                        } else {
+                        } else if (indexOfDate(list, `${dateObj.five} 05:00:00`)) {
                             return obj.dt_txt === `${dateObj.five} 05:00:00`;
+                        } else {
+                            return obj.dt_txt === `${dateObj.five} 06:00:00`;
                         }
                     });
+                    // console.log(fourthNight)
                     
                     let cardDate = {
                         one: localDate(data.city.timezone).one.toDateString().substring(4,10),
@@ -306,6 +313,16 @@ $(document).ready(() => {
                         four: localDate(data.city.timezone).four.toDateString().substring(4,10),
                         five: localDate(data.city.timezone).five.toDateString().substring(4,10),
                     }
+
+                    setDayOne(cardDate.one, firstDay[0].weather[0].icon, firstDay[0].weather[0].main, Math.round(firstDay[0].main.temp), firstDay[0].main.humidity);
+                    setDayTwo(cardDate.two, secondDay[0].weather[0].icon, secondDay[0].weather[0].main, Math.round(secondDay[0].main.temp), secondDay[0].main.humidity);
+                    setDayThree(cardDate.three, thirdDay[0].weather[0].icon, thirdDay[0].weather[0].main, Math.round(thirdDay[0].main.temp), thirdDay[0].main.humidity);
+                    setDayFour(cardDate.four, fourthDay[0].weather[0].icon, fourthDay[0].weather[0].main, Math.round(fourthDay[0].main.temp), fourthDay[0].main.humidity);
+
+                    setNightOne(firstNight[0].weather[0].icon, firstNight[0].weather[0].main, Math.round(firstNight[0].main.temp), firstNight[0].main.humidity);
+                    setNightTwo(secondNight[0].weather[0].icon, secondNight[0].weather[0].main, Math.round(secondNight[0].main.temp), secondNight[0].main.humidity);
+                    setNightThree(thirdNight[0].weather[0].icon, thirdNight[0].weather[0].main, Math.round(thirdNight[0].main.temp), thirdNight[0].main.humidity);
+                    setNightFour(fourthNight[0].weather[0].icon, fourthNight[0].weather[0].main, Math.round(fourthNight[0].main.temp), fourthNight[0].main.humidity);
 
                     setDay(dayOne, cardDate.one, firstDay[0].weather[0].icon, firstDay[0].weather[0].main, Math.round(firstDay[0].main.temp), firstDay[0].main.humidity);
                     setDay(dayTwo, cardDate.two, secondDay[0].weather[0].icon, secondDay[0].weather[0].main, Math.round(secondDay[0].main.temp), secondDay[0].main.humidity);
@@ -351,11 +368,11 @@ $(document).ready(() => {
     }
 
     let currentWeatherPrimary = false;
-    let dayOnePrimary = false;
-    let dayTwoPrimary = false;
-    let dayThreePrimary = false;
-    let dayFourPrimary = false;
-    let dayFivePrimary = false;
+    let dayOnePrimary = true;
+    let dayTwoPrimary = true;
+    let dayThreePrimary = true;
+    let dayFourPrimary = true;
+    let dayFivePrimary = true;
     var cityName = $('#city-name');
     var currentNight = $('.current-night');
     var cities = $('#cities');
@@ -402,91 +419,147 @@ $(document).ready(() => {
         wind: ''
     }
 
-    var fiveForecast = {
-        one: {
-            day: {
-                icon: '',
-                temp: '',
-                humidity: ''
-            },
-            night: {
-                icon: '',
-                temp: '',
-                humidity: ''
-            }
-        },
-        two: {
-            day: {
-                icon: '',
-                temp: '',
-                humidity: ''
-            },
-            night: {
-                icon: '',
-                temp: '',
-                humidity: ''
-            }
-        },
-        three: {
-            day: {
-                icon: '',
-                temp: '',
-                humidity: ''
-            },
-            night: {
-                icon: '',
-                temp: '',
-                humidity: ''
-            }
-        },
-        four: {
-            day: {
-                icon: '',
-                temp: '',
-                humidity: ''
-            },
-            night: {
-                icon: '',
-                temp: '',
-                humidity: ''
-            }
-        },
-        five: {
-            day: {
-                icon: '',
-                temp: '',
-                humidity: ''
-            },
-            night: {
-                icon: '',
-                temp: '',
-                humidity: ''
-            }
+    const setDayOne = (date, icon, condition, temp, humidity) => {
+        daysForecast.one = {
+            date: date,
+            icon: icon,
+            condition: condition,
+            temp: temp,
+            humidity: humidity
         }
     }
 
-    var fourNight = {
+    const setDayTwo = (date, icon, condition, temp, humidity) => {
+        daysForecast.two = {
+            date: date,
+            icon: icon,
+            condition: condition,
+            temp: temp,
+            humidity: humidity
+        }
+    }
+
+    const setDayThree = (date, icon, condition, temp, humidity) => {
+        daysForecast.three = {
+            date: date,
+            icon: icon,
+            condition: condition,
+            temp: temp,
+            humidity: humidity
+        }
+    }
+
+    const setDayFour = (date, icon, condition, temp, humidity) => {
+        daysForecast.four = {
+            date: date,
+            icon: icon,
+            condition: condition,
+            temp: temp,
+            humidity: humidity
+        }
+    }
+
+    const setNightOne = (icon, condition, temp, humidity) => {
+        nightsForecast.one = {
+            icon: icon,
+            condition: condition,
+            temp: temp,
+            humidity: humidity
+        }
+    }
+
+    const setNightTwo = (icon, condition, temp, humidity) => {
+        nightsForecast.two = {
+            icon: icon,
+            condition: condition,
+            temp: temp,
+            humidity: humidity
+        }
+    }
+
+    const setNightThree = (icon, condition, temp, humidity) => {
+        nightsForecast.three = {
+            icon: icon,
+            condition: condition,
+            temp: temp,
+            humidity: humidity
+        }
+    }
+
+    const setNightFour = (icon, condition, temp, humidity) => {
+        nightsForecast.four = {
+            icon: icon,
+            condition: condition,
+            temp: temp,
+            humidity: humidity
+        }
+    }
+
+    var daysForecast = {
+        one: {
+            date: '',
+            icon: '',
+            condition: '',
+            temp: '',
+            humidity: ''
+        },
+        two: {
+            date: '',
+            icon: '',
+            condition: '',
+            temp: '',
+            humidity: ''
+        },
+        three: {
+            date: '',
+            icon: '',
+            condition: '',
+            temp: '',
+            humidity: ''
+        },
+        four: {
+            date: '',
+            icon: '',
+            condition: '',
+            temp: '',
+            humidity: ''
+        },
+        five: {
+            date: '',
+            icon: '',
+            condition: '',
+            temp: '',
+            humidity: ''
+        }
+    }
+
+    var nightsForecast = {
         one: {
             icon: '',
+            condition: '',
             temp: '',
             humidity: ''
         },
         two: {
             icon: '',
+            condition: '',
             temp: '',
             humidity: ''
         },
         three: {
             icon: '',
+            condition: '',
             temp: '',
             humidity: ''
         },
         four: {
             icon: '',
+            condition: '',
             temp: '',
             humidity: ''
-        },
+        }
     }
+
 
     var icon = 'cloudy';
     var date = '2/6/21';
@@ -611,13 +684,21 @@ $(document).ready(() => {
         return;
     });
 
+    // when this loads, 
+        // dayOnePrimay is false
+        // set day one card with daysForecast.one.date, 
+
     dayOne.on('click', function() {
         if (window.innerWidth <= 600) {
             if (dayOnePrimary) {
-                $('#day-one').removeClass('bg-primary five-night').addClass('five-day');
+                let obj = nightsForecast.one
+                setDay(dayOne, daysForecast.one.date, obj.icon, obj.condition, obj.temp, obj.humidity);
+                $('#day-one').removeClass('bg-primary five-day').addClass('five-night');
                 dayOnePrimary = false;        
             } else {
-                $('#day-one').removeClass('five-day').addClass('five-night');
+                let obj = daysForecast.one
+                setDay(dayOne, obj.date, obj.icon, obj.condition, obj.temp, obj.humidity);
+                $('#day-one').removeClass('five-night').addClass('five-day');
                 dayOnePrimary = true;
             }
         }
@@ -627,10 +708,14 @@ $(document).ready(() => {
     dayTwo.on('click', function() {
         if (window.innerWidth <= 600) {
             if (dayTwoPrimary) {
-                $('#day-two').removeClass('bg-primary five-night').addClass('five-day');
+                $('#day-two').removeClass('bg-primary five-day').addClass('five-night');
+                let obj = nightsForecast.two
+                setDay(dayTwo, daysForecast.two.date, obj.icon, obj.condition, obj.temp, obj.humidity);
                 dayTwoPrimary = false;        
             } else {
-                $('#day-two').removeClass('five-day').addClass('five-night');
+                $('#day-two').removeClass('five-night').addClass('five-day');
+                let obj = daysForecast.two
+                setDay(dayTwo, obj.date, obj.icon, obj.condition, obj.temp, obj.humidity);
                 dayTwoPrimary = true;
             }
         }
@@ -640,10 +725,14 @@ $(document).ready(() => {
     dayThree.on('click', function() {
         if (window.innerWidth <= 600) {
             if (dayThreePrimary) {
-                $('#day-three').removeClass('bg-primary five-night').addClass('five-day');
+                $('#day-three').removeClass('bg-primary five-day').addClass('five-night');
+                let obj = nightsForecast.three
+                setDay(dayThree, daysForecast.three.date, obj.icon, obj.condition, obj.temp, obj.humidity);
                 dayThreePrimary = false;        
             } else {
-                $('#day-three').removeClass('five-day').addClass('five-night');
+                $('#day-three').removeClass('five-night').addClass('five-day');
+                let obj = daysForecast.three
+                setDay(dayThree, obj.date, obj.icon, obj.condition, obj.temp, obj.humidity);
                 dayThreePrimary = true;
             }
         }
@@ -654,10 +743,14 @@ $(document).ready(() => {
         // console.log($(this).children().children('p.icon').text('hello'));
         if (window.innerWidth <= 600) {
             if (dayFourPrimary) {
-                $('#day-four').removeClass('bg-primary five-night').addClass('five-day');
+                $('#day-four').removeClass('bg-primary five-day').addClass('five-night');
+                let obj = nightsForecast.four
+                setDay(dayFour, daysForecast.four.date, obj.icon, obj.condition, obj.temp, obj.humidity);
                 dayFourPrimary = false;        
             } else {
-                $('#day-four').removeClass('five-day').addClass('five-night');
+                $('#day-four').removeClass('five-night').addClass('five-day');
+                let obj = daysForecast.four
+                setDay(dayFour, obj.date, obj.icon, obj.condition, obj.temp, obj.humidity);
                 dayFourPrimary = true;
             }
         }
@@ -667,10 +760,10 @@ $(document).ready(() => {
     dayFive.on('click', function() {
         if (window.innerWidth <= 600) {
             if (dayFivePrimary) {
-                $('#day-five').removeClass('bg-primary five-night').addClass('five-day');
+                $('#day-five').removeClass('bg-primary five-day').addClass('five-night');
                 dayFivePrimary = false;        
             } else {
-                $('#day-five').removeClass('five-day').addClass('five-night');
+                $('#day-five').removeClass('five-night').addClass('five-day');
                 dayFivePrimary = true;
             }
         }
