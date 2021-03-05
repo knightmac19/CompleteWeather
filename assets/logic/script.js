@@ -1,6 +1,15 @@
+const reverseHash = str => {
+    let result = '';
+    for (var i = str.length - 1; i >= 0; i--) {
+        result += str[i];
+    }
+    return result;
+}
+var yek = '8867845d766766103b7874c8ae32f415';
+const key = reverseHash(yek);
+
 $(document).ready(() => {
     console.log('script ready!');
-    var key = '514f23ea8c4787b301667667d5487688';
     var currentCol = $('#current-col');
     var nightTemp = $('.night-temp-row');
     var fiveLg = $('.five-lg');
@@ -161,6 +170,8 @@ $(document).ready(() => {
           
     }
 
+
+
     const localDate = (zone) => {
         let unixEpochTimeStamp = Date.parse(new Date(Date.now()));
         let timeZone = zone * 1000;
@@ -170,11 +181,6 @@ $(document).ready(() => {
 
         let result = {
             current: new Date(combined).toDateString().substring(4),
-            // one: new Date(combined + (dayInMilliseconds * 1)).toLocaleDateString(),
-            // two: new Date(combined + (dayInMilliseconds * 2)).toLocaleDateString(),
-            // three: new Date(combined + (dayInMilliseconds * 3)).toLocaleDateString(),
-            // four: new Date(combined + (dayInMilliseconds * 4)).toLocaleDateString(),
-            // five: new Date(combined + (dayInMilliseconds * 5)).toLocaleDateString()
             one: new Date(combined + (dayInMilliseconds * 1)).toDateString().substring(4 , 11),
             two: new Date(combined + (dayInMilliseconds * 2)).toDateString().substring(4 , 11),
             three: new Date(combined + (dayInMilliseconds * 3)).toDateString().substring(4 , 11),
@@ -184,6 +190,12 @@ $(document).ready(() => {
 
         return result;
     }
+
+
+
+
+
+
     
     let currentWeatherPrimary = false;
     let dayOnePrimary = false;
