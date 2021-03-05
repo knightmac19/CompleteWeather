@@ -307,16 +307,16 @@ $(document).ready(() => {
                         five: localDate(data.city.timezone).five.toDateString().substring(4,10),
                     }
 
-                    setDay(dayOne, cardDate.one, firstDay[0].weather[0].icon, Math.round(firstDay[0].main.temp), firstDay[0].main.humidity);
-                    setDay(dayTwo, cardDate.two, secondDay[0].weather[0].icon, Math.round(secondDay[0].main.temp), secondDay[0].main.humidity);
-                    setDay(dayThree, cardDate.three, thirdDay[0].weather[0].icon, Math.round(thirdDay[0].main.temp), thirdDay[0].main.humidity);
-                    setDay(dayFour, cardDate.four, fourthDay[0].weather[0].icon, Math.round(fourthDay[0].main.temp), fourthDay[0].main.humidity);
-                    setDay(dayFive, cardDate.five, fifthDay[0].weather[0].icon, Math.round(fifthDay[0].main.temp), fifthDay[0].main.humidity);
+                    setDay(dayOne, cardDate.one, firstDay[0].weather[0].icon, firstDay[0].weather[0].main, Math.round(firstDay[0].main.temp), firstDay[0].main.humidity);
+                    setDay(dayTwo, cardDate.two, secondDay[0].weather[0].icon, secondDay[0].weather[0].main, Math.round(secondDay[0].main.temp), secondDay[0].main.humidity);
+                    setDay(dayThree, cardDate.three, thirdDay[0].weather[0].icon, thirdDay[0].weather[0].main, Math.round(thirdDay[0].main.temp), thirdDay[0].main.humidity);
+                    setDay(dayFour, cardDate.four, fourthDay[0].weather[0].icon, fourthDay[0].weather[0].main, Math.round(fourthDay[0].main.temp), fourthDay[0].main.humidity);
+                    setDay(dayFive, cardDate.five, fifthDay[0].weather[0].icon, fifthDay[0].weather[0].main, Math.round(fifthDay[0].main.temp), fifthDay[0].main.humidity);
 
-                    setNight(nightOne, firstNight[0].weather[0].main, Math.round(firstNight[0].main.temp), firstNight[0].main.humidity);
-                    setNight(nightTwo, secondNight[0].weather[0].main, Math.round(secondNight[0].main.temp), secondNight[0].main.humidity);
-                    setNight(nightThree, thirdNight[0].weather[0].main, Math.round(thirdNight[0].main.temp), thirdNight[0].main.humidity);
-                    setNight(nightFour, fourthNight[0].weather[0].main, Math.round(fourthNight[0].main.temp), fourthNight[0].main.humidity);
+                    setNight(nightOne, firstNight[0].weather[0].icon, firstNight[0].weather[0].main, Math.round(firstNight[0].main.temp), firstNight[0].main.humidity);
+                    setNight(nightTwo, secondNight[0].weather[0].icon, secondNight[0].weather[0].main, Math.round(secondNight[0].main.temp), secondNight[0].main.humidity);
+                    setNight(nightThree, thirdNight[0].weather[0].icon, thirdNight[0].weather[0].main, Math.round(thirdNight[0].main.temp), thirdNight[0].main.humidity);
+                    setNight(nightFour, fourthNight[0].weather[0].icon, fourthNight[0].weather[0].main, Math.round(fourthNight[0].main.temp), fourthNight[0].main.humidity);
                 }
             }).then(res => {
                 fiveLg.show();
@@ -511,16 +511,18 @@ $(document).ready(() => {
     }
 
     // sets content for each day card
-    const setDay = (element, date, icon, temp, humidity) => {
+    const setDay = (element, date, icon, condition, temp, humidity) => {
         element.children('.card-header').children('p.text-center').text(date);
         element.children().children('img.icon').attr('src', `http://openweathermap.org/img/wn/${icon}.png`);
+        element.children().children('p.condition').text(condition);
         element.children().children().children('span.temp').text(temp);
         element.children().children().children('span.humidity').text(humidity);
     }
 
     // set content for each night card
-    const setNight = (element, icon, temp, humidity) => {
-        element.children('p.icon').text(icon);
+    const setNight = (element, icon, condition, temp, humidity) => {
+        element.children('img.icon').attr('src', `http://openweathermap.org/img/wn/${icon}.png`);
+        element.children('p.condition').text(condition);
         element.children().children('span.temp').text(temp);
         element.children().children('span.humidity').text(humidity);
     }
