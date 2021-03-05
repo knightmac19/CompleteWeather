@@ -102,29 +102,40 @@ $(document).ready(() => {
             },
             dataType: 'json',
             success: function(data) {
-              console.log(data);
+                console.log(data);
               
-              updateList(citiesList, data.name);
-              setLocal(citiesList);
-              cities.children().remove();
-              renderBtns(JSON.parse(localStorage.getItem('cities')));
+                updateList(citiesList, data.name);
+                setLocal(citiesList);
+                cities.children().remove();
+                renderBtns(JSON.parse(localStorage.getItem('cities')));
 
-              setCurrent(
-                  currentCol,
-                  data.name,
-                  localDate(data.timezone).current,
-                  Math.round(data.main.temp),
-                  data.weather[0].icon,
-                  Math.round(data.main.feels_like),
-                  data.main.humidity,
-                  data.wind.speed
+                setCurrentForecast(
+                    data.name,
+                    localDate(data.timezone).current,
+                    Math.round(data.main.temp),
+                    data.weather[0].icon,
+                    Math.round(data.main.feels_like),
+                    data.main.humidity,
+                    data.wind.speed
+                );
+
+                setCurrent(
+                    currentCol,
+                    data.name,
+                    localDate(data.timezone).current,
+                    Math.round(data.main.temp),
+                    data.weather[0].icon,
+                    Math.round(data.main.feels_like),
+                    data.main.humidity,
+                    data.wind.speed
                 );
             },
             type: 'GET'
         }).then(data => {
+            console.log(currentForecast)
 
             $.ajax({
-                url:`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${key}&units=metric`,
+                url:`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&cnt=20&appid=${key}&units=metric`,
                 data: {
                     format: 'json'
                 },
@@ -133,30 +144,84 @@ $(document).ready(() => {
                 },
                 dataType: 'json',
                 success: function(data) {
-                    // console.log('five day: ')
-                    // console.log(data)
+                    console.log('five day: ')
+                    console.log(data)
 
-                    let firstDay = data.list[4];
-                    let secondDay = data.list[12];
-                    let thirdDay = data.list[20];
-                    let fourthDay = data.list[28];
-                    let fifthDay = data.list[36];
+                    // var result = jsObjects.filter(obj => {
+                    //     return obj.b === 6
+                    //   })
 
-                    let firstNight = data.list[8]; 
-                    let secondNight = data.list[16];
-                    let thirdNight = data.list[24];
-                    let fourthNight = data.list[32];
+                    let list = data.list;
 
-                    setDay(dayOne, localDate(data.city.timezone).one, firstDay.weather[0].icon, Math.round(firstDay.main.temp), firstDay.main.humidity);
-                    setDay(dayTwo, localDate(data.city.timezone).two, secondDay.weather[0].icon, Math.round(secondDay.main.temp), secondDay.main.humidity);
-                    setDay(dayThree, localDate(data.city.timezone).three, thirdDay.weather[0].icon, Math.round(thirdDay.main.temp), thirdDay.main.humidity);
-                    setDay(dayFour, localDate(data.city.timezone).four, fourthDay.weather[0].icon, Math.round(fourthDay.main.temp), fourthDay.main.humidity);
-                    setDay(dayFive, localDate(data.city.timezone).five, fifthDay.weather[0].icon, Math.round(fifthDay.main.temp), fifthDay.main.humidity);
+                    let dateObj = {
+                        one: localDate(data.city.timezone).one.toISOString().substring(0,10),
+                        two: localDate(data.city.timezone).two.toISOString().substring(0,10),
+                        three: localDate(data.city.timezone).three.toISOString().substring(0,10),
+                        four: localDate(data.city.timezone).four.toISOString().substring(0,10),
+                        five: localDate(data.city.timezone).five.toISOString().substring(0,10),
+                    }
 
-                    setNight(nightOne, firstNight.weather[0].main, Math.round(firstNight.main.temp), firstNight.main.humidity);
-                    setNight(nightTwo, secondNight.weather[0].main, Math.round(secondNight.main.temp), secondNight.main.humidity);
-                    setNight(nightThree, thirdNight.weather[0].main, Math.round(thirdNight.main.temp), thirdNight.main.humidity);
-                    setNight(nightFour, fourthNight.weather[0].main, Math.round(fourthNight.main.temp), fourthNight.main.humidity);
+                    let firstDay = list.filter(obj => {
+                        return obj.dt_txt === `${dateObj.one} 13:00:00`
+                    });
+                    let secondDay = list.filter(obj => {
+                        return obj.dt_txt === `${dateObj.two} 13:00:00`
+                    });
+                    let thirdDay = list.filter(obj => {
+                        return obj.dt_txt === `${dateObj.three} 13:00:00`
+                    });
+                    let fourthDay = list.filter(obj => {
+                        return obj.dt_txt === `${dateObj.four} 13:00:00`
+                    });
+                    let fifthDay = list.filter(obj => {
+                        return obj.dt_txt === `${dateObj.five} 13:00:00`
+                    });
+
+                    // let firstDay = data.list[4];
+                    // let secondDay = data.list[12];
+                    // let thirdDay = data.list[20];
+                    // let fourthDay = data.list[28];
+                    // let fifthDay = data.list[36];
+
+                    let firstNight = list.filter(obj => {
+                        if (obj.dt_txt !== `${dateObj.one} 01:00:00`)
+                        return list[0];
+                    });
+                    let secondNight = list.filter(obj => {
+                        return obj.dt_txt === `${dateObj.two} 01:00:00`
+                    });
+                    let thirdNight = list.filter(obj => {
+                        return obj.dt_txt === `${dateObj.three} 01:00:00`
+                    });
+                    let fourthNight = list.filter(obj => {
+                        return obj.dt_txt === `${dateObj.four} 01:00:00`
+                    });
+                    console.log('first day')
+                    console.log(firstDay)
+                    
+
+                    // let firstNight = data.list[8]; 
+                    // let secondNight = data.list[16];
+                    // let thirdNight = data.list[24];
+                    // let fourthNight = data.list[32];
+                    let cardDate = {
+                        one: localDate(data.city.timezone).one.toDateString().substring(4,10),
+                        two: localDate(data.city.timezone).two.toDateString().substring(4,10),
+                        three: localDate(data.city.timezone).three.toDateString().substring(4,10),
+                        four: localDate(data.city.timezone).four.toDateString().substring(4,10),
+                        five: localDate(data.city.timezone).five.toDateString().substring(4,10),
+                    }
+
+                    setDay(dayOne, cardDate.one, firstDay[0].weather[0].icon, Math.round(firstDay[0].main.temp), firstDay[0].main.humidity);
+                    setDay(dayTwo, cardDate.two, secondDay[0].weather[0].icon, Math.round(secondDay[0].main.temp), secondDay[0].main.humidity);
+                    setDay(dayThree, cardDate.three, thirdDay[0].weather[0].icon, Math.round(thirdDay[0].main.temp), thirdDay[0].main.humidity);
+                    setDay(dayFour, cardDate.four, fourthDay[0].weather[0].icon, Math.round(fourthDay[0].main.temp), fourthDay[0].main.humidity);
+                    setDay(dayFive, cardDate.five, fifthDay[0].weather[0].icon, Math.round(fifthDay[0].main.temp), fifthDay[0].main.humidity);
+
+                    setNight(nightOne, firstNight[0].weather[0].main, Math.round(firstNight[0].main.temp), firstNight[0].main.humidity);
+                    setNight(nightTwo, secondNight[0].weather[0].main, Math.round(secondNight[0].main.temp), secondNight[0].main.humidity);
+                    setNight(nightThree, thirdNight[0].weather[0].main, Math.round(thirdNight[0].main.temp), thirdNight[0].main.humidity);
+                    setNight(nightFour, fourthNight[0].weather[0].main, Math.round(fourthNight[0].main.temp), fourthNight[0].main.humidity);
                 }
             }).then(res => {
                 fiveLg.show();
@@ -170,33 +235,30 @@ $(document).ready(() => {
           
     }
 
+    
+
 
 
     const localDate = (zone) => {
         let unixEpochTimeStamp = Date.parse(new Date(Date.now()));
         let timeZone = zone * 1000;
         let combined = unixEpochTimeStamp + timeZone;
-
+    
         let dayInMilliseconds = 24 * 60 * 60 * 1000;
-
+        let current = new Date(combined);
+    
         let result = {
-            current: new Date(combined).toDateString().substring(4),
-            one: new Date(combined + (dayInMilliseconds * 1)).toDateString().substring(4 , 11),
-            two: new Date(combined + (dayInMilliseconds * 2)).toDateString().substring(4 , 11),
-            three: new Date(combined + (dayInMilliseconds * 3)).toDateString().substring(4 , 11),
-            four: new Date(combined + (dayInMilliseconds * 4)).toDateString().substring(4 , 11),
-            five: new Date(combined + (dayInMilliseconds * 5)).toDateString().substring(4 , 11)
+            current: current.toDateString().substring(4),
+            one: new Date(combined + dayInMilliseconds * 1),
+            two: new Date(combined + (dayInMilliseconds * 2)),
+            three: new Date(combined + (dayInMilliseconds * 3)),
+            four: new Date(combined + (dayInMilliseconds * 4)),
+            five: new Date(combined + (dayInMilliseconds * 5))
         }
-
+    
         return result;
     }
 
-
-
-
-
-
-    
     let currentWeatherPrimary = false;
     let dayOnePrimary = false;
     let dayTwoPrimary = false;
@@ -228,19 +290,26 @@ $(document).ready(() => {
     const fiveDay = 'five-day';
     const fiveNight = 'five-night';
 
-    var currentForecast = {
-        date: '',
-        time: '',
-        day: {
-            temp: '',
-            humidity: '',
-            wind: ''
-        },
-        night: {
-            temp: '',
-            humidity: '',
-            wind: ''
+    const setCurrentForecast = (name, date, temp, icon, feels, humidity, wind) => {
+        currentForecast = {
+            name: name,
+            date: date,
+            temp: temp,
+            icon: icon,
+            feels: feels,
+            humidity: humidity,
+            wind: wind
         }
+    }
+
+    var currentForecast = {
+        name: '',
+        temp: '',
+        date: '',
+        icon: '',
+        feels: '',
+        humidity: '',
+        wind: ''
     }
 
     var fiveForecast = {
