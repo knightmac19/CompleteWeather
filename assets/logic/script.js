@@ -147,11 +147,16 @@ $(document).ready(() => {
                     console.log('five day: ')
                     console.log(data)
 
-                    // var result = jsObjects.filter(obj => {
-                    //     return obj.b === 6
-                    //   })
-
                     let list = data.list;
+
+                    const indexOfDate = (arr, key) => {
+                        let result = arr.findIndex(i => i.dt_txt === key);
+                        if (result !== -1) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
 
                     let dateObj = {
                         one: localDate(data.city.timezone).one.toISOString().substring(0,10),
@@ -162,48 +167,143 @@ $(document).ready(() => {
                     }
 
                     let firstDay = list.filter(obj => {
-                        return obj.dt_txt === `${dateObj.one} 13:00:00`
+                        if (!indexOfDate(list, `${dateObj.one} 12:00:00`)) {
+                            return obj.dt_txt === `${dateObj.one} 13:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.one} 13:00:00`)) {
+                            return obj.dt_txt === `${dateObj.one} 14:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.one} 14:00:00`)) {
+                            return obj.dt_txt === `${dateObj.one} 15:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.one} 15:00:00`)) {
+                            return obj.dt_txt === `${dateObj.one} 16:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.one} 16:00:00`)) {
+                            return obj.dt_txt === `${dateObj.one} 17:00:00`;
+                        } else {
+                            return obj.dt_txt === `${dateObj.one} 12:00:00`;
+                        }
+                        
                     });
                     let secondDay = list.filter(obj => {
-                        return obj.dt_txt === `${dateObj.two} 13:00:00`
+                        if (!indexOfDate(list, `${dateObj.two} 12:00:00`)) {
+                            return obj.dt_txt === `${dateObj.two} 13:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.two} 13:00:00`)) {
+                            return obj.dt_txt === `${dateObj.two} 14:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.two} 14:00:00`)) {
+                            return obj.dt_txt === `${dateObj.two} 15:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.two} 15:00:00`)) {
+                            return obj.dt_txt === `${dateObj.two} 16:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.two} 16:00:00`)) {
+                            return obj.dt_txt === `${dateObj.two} 17:00:00`;
+                        } else {
+                            return obj.dt_txt === `${dateObj.two} 12:00:00`;
+                        }
                     });
                     let thirdDay = list.filter(obj => {
-                        return obj.dt_txt === `${dateObj.three} 13:00:00`
+                        if (!indexOfDate(list, `${dateObj.three} 12:00:00`)) {
+                            return obj.dt_txt === `${dateObj.three} 13:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.three} 13:00:00`)) {
+                            return obj.dt_txt === `${dateObj.three} 14:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.three} 14:00:00`)) {
+                            return obj.dt_txt === `${dateObj.three} 15:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.three} 15:00:00`)) {
+                            return obj.dt_txt === `${dateObj.three} 16:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.three} 16:00:00`)) {
+                            return obj.dt_txt === `${dateObj.three} 17:00:00`;
+                        } else {
+                            return obj.dt_txt === `${dateObj.three} 12:00:00`;
+                        }
                     });
                     let fourthDay = list.filter(obj => {
-                        return obj.dt_txt === `${dateObj.four} 13:00:00`
+                        if (!indexOfDate(list, `${dateObj.four} 12:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 13:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.four} 13:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 14:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.four} 14:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 15:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.four} 15:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 16:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.four} 16:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 17:00:00`;
+                        } else {
+                            return obj.dt_txt === `${dateObj.four} 12:00:00`;
+                        }
                     });
                     let fifthDay = list.filter(obj => {
-                        return obj.dt_txt === `${dateObj.five} 13:00:00`
+                        if (!indexOfDate(list, `${dateObj.five} 12:00:00`)) {
+                            return obj.dt_txt === `${dateObj.five} 13:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.five} 13:00:00`)) {
+                            return obj.dt_txt === `${dateObj.five} 14:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.five} 14:00:00`)) {
+                            return obj.dt_txt === `${dateObj.five} 15:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.five} 15:00:00`)) {
+                            return obj.dt_txt === `${dateObj.five} 16:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.five} 16:00:00`)) {
+                            return obj.dt_txt === `${dateObj.five} 17:00:00`;
+                        } else {
+                            return obj.dt_txt === `${dateObj.five} 12:00:00`;
+                        }
                     });
-
-                    // let firstDay = data.list[4];
-                    // let secondDay = data.list[12];
-                    // let thirdDay = data.list[20];
-                    // let fourthDay = data.list[28];
-                    // let fifthDay = data.list[36];
 
                     let firstNight = list.filter(obj => {
-                        if (obj.dt_txt !== `${dateObj.one} 01:00:00`)
-                        return list[0];
+                        if (!indexOfDate(list, `${dateObj.two} 00:00:00`)) {
+                            return obj.dt_txt === `${dateObj.two} 01:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.two} 01:00:00`)) {
+                            return obj.dt_txt === `${dateObj.two} 02:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.two} 02:00:00`)) {
+                            return obj.dt_txt === `${dateObj.two} 03:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.two} 03:00:00`)) {
+                            return obj.dt_txt === `${dateObj.two} 04:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.two} 04:00:00`)) {
+                            return obj.dt_txt === `${dateObj.two} 05:00:00`;
+                        } else {
+                            return obj.dt_txt === `${dateObj.two} 06:00:00`;
+                        }
                     });
                     let secondNight = list.filter(obj => {
-                        return obj.dt_txt === `${dateObj.two} 01:00:00`
+                        if (!indexOfDate(list, `${dateObj.three} 00:00:00`)) {
+                            return obj.dt_txt === `${dateObj.three} 01:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.three} 01:00:00`)) {
+                            return obj.dt_txt === `${dateObj.three} 02:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.three} 02:00:00`)) {
+                            return obj.dt_txt === `${dateObj.three} 03:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.three} 03:00:00`)) {
+                            return obj.dt_txt === `${dateObj.three} 04:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.three} 04:00:00`)) {
+                            return obj.dt_txt === `${dateObj.three} 05:00:00`;
+                        } else {
+                            return obj.dt_txt === `${dateObj.three} 06:00:00`;
+                        }
                     });
                     let thirdNight = list.filter(obj => {
-                        return obj.dt_txt === `${dateObj.three} 01:00:00`
+                        if (!indexOfDate(list, `${dateObj.four} 00:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 01:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.four} 01:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 02:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.four} 02:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 03:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.four} 03:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 04:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.four} 04:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 05:00:00`;
+                        } else {
+                            return obj.dt_txt === `${dateObj.four} 06:00:00`;
+                        }
                     });
                     let fourthNight = list.filter(obj => {
-                        return obj.dt_txt === `${dateObj.four} 01:00:00`
+                        if (!indexOfDate(list, `${dateObj.five} 00:00:00`)) {
+                            return obj.dt_txt === `${dateObj.five} 01:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.five} 01:00:00`)) {
+                            return obj.dt_txt === `${dateObj.five} 02:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.five} 02:00:00`)) {
+                            return obj.dt_txt === `${dateObj.five} 03:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.five} 03:00:00`)) {
+                            return obj.dt_txt === `${dateObj.five} 04:00:00`;
+                        } else if (!indexOfDate(list, `${dateObj.five} 04:00:00`)) {
+                            return obj.dt_txt === `${dateObj.five} 05:00:00`;
+                        } else {
+                            return obj.dt_txt === `${dateObj.five} 06:00:00`;
+                        }
                     });
-                    console.log('first day')
-                    console.log(firstDay)
                     
-
-                    // let firstNight = data.list[8]; 
-                    // let secondNight = data.list[16];
-                    // let thirdNight = data.list[24];
-                    // let fourthNight = data.list[32];
                     let cardDate = {
                         one: localDate(data.city.timezone).one.toDateString().substring(4,10),
                         two: localDate(data.city.timezone).two.toDateString().substring(4,10),
@@ -235,10 +335,6 @@ $(document).ready(() => {
           
     }
 
-    
-
-
-
     const localDate = (zone) => {
         let unixEpochTimeStamp = Date.parse(new Date(Date.now()));
         let timeZone = zone * 1000;
@@ -268,7 +364,6 @@ $(document).ready(() => {
     var cityName = $('#city-name');
     var currentNight = $('.current-night');
     var cities = $('#cities');
-
     
     // grab five-day cards for content manipulation
     var dayOne = $('#day-one');
@@ -588,9 +683,5 @@ $(document).ready(() => {
     $(window).resize(()=> {
         check();
     });
-
-    
-
-    
 
 });
