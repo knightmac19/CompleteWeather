@@ -69,9 +69,8 @@ $(document).ready(() => {
         e.preventDefault();
         currentCol.show();
         let editedStr = capitalizeFirst(input.val().trim());
-        let timestamp = Date.now();
 
-        getCurrentWeather(editedStr, timestamp);
+        getCurrentWeather(editedStr);
         input.val('');
     });
 
@@ -79,14 +78,8 @@ $(document).ready(() => {
         e.preventDefault();
         currentCol.show();
         let thisString = $(this).text();
-        let timestamp = Date.now();
         // console.log(thisString);
-        getCurrentWeather(thisString, timestamp);
-        
-        updateList(citiesList, thisString);
-        setLocal(citiesList);
-        cities.children().remove();
-        renderBtns(JSON.parse(localStorage.getItem('cities')));
+        getCurrentWeather(thisString);
     });
 
 
