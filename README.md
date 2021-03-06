@@ -44,7 +44,7 @@ Mobile - less than 600px
 
 ![Mobile Design 1](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Mobile_1.png){:height="568px" width="321px"}  
 
-![Mobile Design 2](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Mobile_2.png){:height="568px" width="321px"}    
+![Mobile Design 2](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Mobile_2.png)   
 
 Tablet - more than 600px  
 
