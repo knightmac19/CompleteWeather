@@ -132,7 +132,6 @@ $(document).ready(() => {
                 },
                 dataType: 'json',
                 success: function(data) {
-
                     let list = data.list;
 
                     const indexOfDate = (arr, key) => {
@@ -273,7 +272,6 @@ $(document).ready(() => {
                             return obj.dt_txt === `${dateObj.four} 19:00:00`;
                         }
                     });
-                    
                     let cardDate = {
                         one: localDate(data.city.timezone).one.toDateString().substring(4,10),
                         two: localDate(data.city.timezone).two.toDateString().substring(4,10),
