@@ -22,7 +22,7 @@ Single page weather application that allows users to query current and four day 
 [Contents](#contents)  
 After a search the application displays the city name as returned from the API, current date in the queried locale, current temperature, weather icon, what the current temperature feels like (after wind chill / humidity), wind speed, and humidity level. All displayed values are metric. 
 
-![Honolulu Weather]()  
+![Honolulu Weather](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Honolulu_Weather.png)  
 
 Below the current weather information, 7 cards are displayed -- four days / 3 nights. The day cards give the date, weather icon, conditions, temperature, and humidity level, while the night cards display the same information *sans* the date.  
 
