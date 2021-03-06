@@ -1,13 +1,14 @@
 # CompleteWeather
 Local &amp; international weather application powered by openweathermap API  
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 
 [Deployed site](https://knightmac19.github.io/CompleteWeather/)
 
 ## <a name="contents"></a>  Contents
 - [Description](#description)
 - [Usage](#usage)
+- [Responsive Design](#responsive)
 - [API](#API)
 - [Challenges](#challenges)
 - [License](#license)
@@ -34,6 +35,23 @@ On large screens, a column will appear to the left housing the search bar and a 
 If the API does not return a successful response a modal will inform the user that the search didn't produce any results.
 
 ![Modal with Error Message]()  
+
+## <a name="responsive"></a> Responsive Design
+[Contents](#contents)  
+Development began with designing the desired layout. The application displays all information cleanly with two main layouts: screens less than 600px wide and screens more than 600px wide. Beyond distinct layous, content areas resize themselves proportionally to the screen as the width grows or shrinks. 
+
+Mobile - less than 600px  
+
+![Mobile Design]()  
+
+Tablet - more than 600px  
+
+![Tablet Design]()  
+
+Laptop / Desktop - more than 992px  
+
+![Laptop Design]()  
+
 
 ## <a name="API"></a> API
 [Contents](#contents)  
