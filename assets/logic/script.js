@@ -11,7 +11,6 @@ const key = reverseHash(yek);
 $(document).ready(() => {
     console.log('script ready!');
     var currentCol = $('#current-col');
-    var nightTemp = $('.night-temp-row');
     var fiveLg = $('.five-lg');
     var modal = $('#exampleModal');
 
