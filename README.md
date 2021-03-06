@@ -26,15 +26,15 @@ After a search the application displays the city name as returned from the API, 
 
 Below the current weather information, 7 cards are displayed -- four days / 3 nights. The day cards give the date, weather icon, conditions, temperature, and humidity level, while the night cards display the same information *sans* the date.  
 
-![Cairo Four Day Cards]()  
+![Cairo Four Day Cards](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Cairo_Four_Day_Cards.png)  
 
 On large screens, a column will appear to the left housing the search bar and a list of previous searches. Clicking a previous search will reload that city's weather data. The number of buttons is capped at 10. Previous search buttons are only added if the API returns a successful response with valid data, so there's no concern about *'weri;lk'* being added as a previous search.  
 
-![Previous Searches on Page Load]()  
+![Previous Searches on Page Load](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Previous_Searches.png)  
 
 If the API does not return a successful response a modal will inform the user that the search didn't produce any results.
 
-![Modal with Error Message]()  
+![Modal with Error Message](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Error_Modal.png)  
 
 ## <a name="responsive"></a> Responsive Design
 [Contents](#contents)  
@@ -42,28 +42,30 @@ Development began with designing the desired layout. The application displays al
 
 Mobile - less than 600px  
 
-![Mobile Design]()  
+![Mobile Design 1](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Mobile_1.png)  
+
+![Mobile Design 2](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Mobile_2.png)  
 
 Tablet - more than 600px  
 
-![Tablet Design]()  
+![Tablet Design](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Tablet.png)  
 
 Laptop / Desktop - more than 992px  
 
-![Laptop Design]()  
+![Laptop Design](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Laptop.png)  
 
 
 ## <a name="API"></a> API
 [Contents](#contents)  
 Two queries are made to the API and data is returned in JSON format. The first query asks the API for current weather information for the queried city.  
 
-![Current Weather JSON Response]()  
+![Current Weather JSON Response](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Current_Res.png)  
 
 If the first query is successful, the application asks the API for 5 day weather information. The response includes general information about the city and then an array of objects with weather information for 3-hour intervals.
 
-![Future Weather JSON Response]()  
+![Future Weather JSON Response](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Future_Headers.png)  
 
-![Array Index JSON Response]()  
+![Array Index JSON Response](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Future_Indices.png)  
 
 ## <a name="challenges"></a> Challenges
 [Contents](#contents)  
