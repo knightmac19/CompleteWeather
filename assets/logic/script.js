@@ -14,12 +14,8 @@ $(document).ready(() => {
     var nightTemp = $('.night-temp-row');
     var fiveLg = $('.five-lg');
     var modal = $('#exampleModal');
-    // var pageError = $('#error-msg');
-    // var errorContainer = $('#error-container');
-    // pageError.hide();
 
     currentCol.hide();
-    // nightTemp.hide();
     fiveLg.hide();
 
     // start: local storage & btn manipulation functions
@@ -78,7 +74,6 @@ $(document).ready(() => {
         e.preventDefault();
         currentCol.show();
         let thisString = $(this).text();
-        // console.log(thisString);
         getCurrentWeather(thisString);
     });
 
@@ -98,7 +93,6 @@ $(document).ready(() => {
             },
             dataType: 'json',
             success: function(data) {
-                console.log(data);
               
                 updateList(citiesList, data.name);
                 setLocal(citiesList);
@@ -128,7 +122,6 @@ $(document).ready(() => {
             },
             type: 'GET'
         }).then(data => {
-            console.log(currentForecast)
 
             $.ajax({
                 url:`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&cnt=40&appid=${key}&units=metric`,
@@ -140,8 +133,6 @@ $(document).ready(() => {
                 },
                 dataType: 'json',
                 success: function(data) {
-                    console.log('five day: ')
-                    console.log(data)
 
                     let list = data.list;
 
@@ -161,8 +152,6 @@ $(document).ready(() => {
                         four: localDate(data.city.timezone).four.toISOString().substring(0,10),
                         five: localDate(data.city.timezone).five.toISOString().substring(0,10),
                     }
-                    console.log('date five')
-                    console.log(dateObj.five)
 
                     let firstDay = list.filter(obj => {
                         if (indexOfDate(list, `${dateObj.one} 12:00:00`)) {
@@ -179,8 +168,6 @@ $(document).ready(() => {
                             return obj.dt_txt === `${dateObj.one} 17:00:00`;
                         }
                     });
-                    console.log('first day')
-                    console.log(firstDay)
                     let secondDay = list.filter(obj => {
                         if (indexOfDate(list, `${dateObj.two} 12:00:00`)) {
                             return obj.dt_txt === `${dateObj.two} 12:00:00`;
@@ -224,21 +211,6 @@ $(document).ready(() => {
                             return obj.dt_txt === `${dateObj.four} 16:00:00`;
                         } else {
                             return obj.dt_txt === `${dateObj.four} 17:00:00`;
-                        }
-                    });
-                    let fifthDay = list.filter(obj => {
-                        if (indexOfDate(list, `${dateObj.five} 12:00:00`)) {
-                            return obj.dt_txt === `${dateObj.five} 12:00:00`;
-                        } else if (indexOfDate(list, `${dateObj.five} 13:00:00`)) {
-                            return obj.dt_txt === `${dateObj.five} 13:00:00`;
-                        } else if (indexOfDate(list, `${dateObj.five} 14:00:00`)) {
-                            return obj.dt_txt === `${dateObj.five} 14:00:00`;
-                        } else if (indexOfDate(list, `${dateObj.five} 15:00:00`)) {
-                            return obj.dt_txt === `${dateObj.five} 15:00:00`;
-                        } else if (indexOfDate(list, `${dateObj.five} 16:00:00`)) {
-                            return obj.dt_txt === `${dateObj.five} 16:00:00`;
-                        } else {
-                            return obj.dt_txt === `${dateObj.five} 17:00:00`;
                         }
                     });
 
@@ -288,23 +260,20 @@ $(document).ready(() => {
                         }
                     });
                     let fourthNight = list.filter(obj => {
-                        if (indexOfDate(list, `${dateObj.five} 00:00:00`)) {
+                        if (indexOfDate(list, `${dateObj.four} 20:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 20:00:00`;
+                        } else if (indexOfDate(list, `${dateObj.four} 21:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 21:00:00`;
+                        } else if (indexOfDate(list, `${dateObj.four} 22:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 22:00:00`;
+                        } else if (indexOfDate(list, `${dateObj.four} 23:00:00`)) {
+                            return obj.dt_txt === `${dateObj.four} 23:00:00`;
+                        } else if (indexOfDate(list, `${dateObj.five} 00:00:00`)) {
                             return obj.dt_txt === `${dateObj.five} 00:00:00`;
-                        } else if (indexOfDate(list, `${dateObj.five} 01:00:00`)) {
-                            return obj.dt_txt === `${dateObj.five} 01:00:00`;
-                        } else if (indexOfDate(list, `${dateObj.five} 02:00:00`)) {
-                            return obj.dt_txt === `${dateObj.five} 02:00:00`;
-                        } else if (indexOfDate(list, `${dateObj.five} 03:00:00`)) {
-                            return obj.dt_txt === `${dateObj.five} 03:00:00`;
-                        } else if (indexOfDate(list, `${dateObj.five} 04:00:00`)) {
-                            return obj.dt_txt === `${dateObj.five} 04:00:00`;
-                        } else if (indexOfDate(list, `${dateObj.five} 05:00:00`)) {
-                            return obj.dt_txt === `${dateObj.five} 05:00:00`;
                         } else {
-                            return obj.dt_txt === `${dateObj.five} 06:00:00`;
+                            return obj.dt_txt === `${dateObj.four} 19:00:00`;
                         }
                     });
-                    // console.log(fourthNight)
                     
                     let cardDate = {
                         one: localDate(data.city.timezone).one.toDateString().substring(4,10),
@@ -328,7 +297,6 @@ $(document).ready(() => {
                     setDay(dayTwo, cardDate.two, secondDay[0].weather[0].icon, secondDay[0].weather[0].main, Math.round(secondDay[0].main.temp), secondDay[0].main.humidity);
                     setDay(dayThree, cardDate.three, thirdDay[0].weather[0].icon, thirdDay[0].weather[0].main, Math.round(thirdDay[0].main.temp), thirdDay[0].main.humidity);
                     setDay(dayFour, cardDate.four, fourthDay[0].weather[0].icon, fourthDay[0].weather[0].main, Math.round(fourthDay[0].main.temp), fourthDay[0].main.humidity);
-                    setDay(dayFive, cardDate.five, fifthDay[0].weather[0].icon, fifthDay[0].weather[0].main, Math.round(fifthDay[0].main.temp), fifthDay[0].main.humidity);
 
                     setNight(nightOne, firstNight[0].weather[0].icon, firstNight[0].weather[0].main, Math.round(firstNight[0].main.temp), firstNight[0].main.humidity);
                     setNight(nightTwo, secondNight[0].weather[0].icon, secondNight[0].weather[0].main, Math.round(secondNight[0].main.temp), secondNight[0].main.humidity);
@@ -371,8 +339,6 @@ $(document).ready(() => {
     let dayTwoPrimary = true;
     let dayThreePrimary = true;
     let dayFourPrimary = true;
-    let dayFivePrimary = true;
-    var cityName = $('#city-name');
     var currentNight = $('.current-night');
     var cities = $('#cities');
     
@@ -381,20 +347,11 @@ $(document).ready(() => {
     var dayTwo = $('#day-two');
     var dayThree = $('#day-three');
     var dayFour = $('#day-four');
-    var dayFive = $('#day-five');
 
     var nightOne = $('#night-one');
     var nightTwo = $('#night-two');
     var nightThree = $('#night-three');
     var nightFour = $('#night-four');
-
-    const bgPrimary = 'bg-primary';
-    const bgDark = 'bg-dark';
-    const defaultLgBg = 'default-lg-bg';
-    const dayBackground = 'day-background';
-    const nightBackground = 'night-background';
-    const fiveDay = 'five-day';
-    const fiveNight = 'five-night';
 
     const setCurrentForecast = (name, date, temp, icon, feels, humidity, wind) => {
         currentForecast = {
@@ -522,13 +479,6 @@ $(document).ready(() => {
             condition: '',
             temp: '',
             humidity: ''
-        },
-        five: {
-            date: '',
-            icon: '',
-            condition: '',
-            temp: '',
-            humidity: ''
         }
     }
 
@@ -589,15 +539,6 @@ $(document).ready(() => {
         element.children().children('span.humidity').text(humidity);
     }
 
-    const resetFalse = () => {
-        currentWeatherPrimary = false;
-        dayOnePrimary = false;
-        dayTwoPrimary = false;
-        dayThreePrimary = false;
-        dayFourPrimary = false;
-        dayFivePrimary = false;
-    }
-
     if (window.innerWidth < 768) {
         cities.addClass('collapse');
     }
@@ -605,14 +546,12 @@ $(document).ready(() => {
     // initial width check for layout
     if (window.innerWidth <= 600) {
         $('.card-day').each(function() {
-            // console.log($(this));
             $(this).css('width','75%');
             $(this).removeClass('bg-primary').addClass('five-day');
         });
         currentCol.removeClass('default-lg-bg').addClass('day-background');
     } else {
         $('.card-day').each(function() {
-            // console.log($(this));
             $(this).css('width','22%');
         });
         currentNight.addClass('text-center');
@@ -620,7 +559,6 @@ $(document).ready(() => {
 
     // listening to update UI as width changes
     const check = () => {
-        // console.log(window.innerWidth);
         if (window.innerWidth < 768) {
             cities.addClass('collapse');
         } else {
@@ -629,15 +567,12 @@ $(document).ready(() => {
 
         if (window.innerWidth <= 600 ) {
             $('.card-day').each(function() {
-                // console.log($(this));
                 $(this).css('width','75%');
                 $(this).removeClass('bg-primary').addClass('five-day');
             });
             currentCol.removeClass('default-lg-bg').addClass('day-background');
         } else {
-            resetFalse();
             $('.card-day').each(function() {
-                // console.log($(this));
                 $(this).css('width','22%');
                 $(this).removeClass('five-day five-night').addClass('bg-primary');
             });
@@ -697,7 +632,6 @@ $(document).ready(() => {
     });
 
     dayFour.on('click', function() {
-        // console.log($(this).children().children('p.icon').text('hello'));
         if (window.innerWidth <= 600) {
             if (dayFourPrimary) {
                 $('#day-four').removeClass('bg-primary five-day').addClass('five-night');
@@ -713,19 +647,6 @@ $(document).ready(() => {
         }
         return;
     });
-
-    // dayFive.on('click', function() {
-    //     if (window.innerWidth <= 600) {
-    //         if (dayFivePrimary) {
-    //             $('#day-five').removeClass('bg-primary five-day').addClass('five-night');
-    //             dayFivePrimary = false;        
-    //         } else {
-    //             $('#day-five').removeClass('five-night').addClass('five-day');
-    //             dayFivePrimary = true;
-    //         }
-    //     }
-    //     return;
-    // });
 
     $(window).resize(()=> {
         check();
