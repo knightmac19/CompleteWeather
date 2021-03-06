@@ -42,9 +42,9 @@ Development began with designing the desired layout. The application displays al
 
 Mobile - less than 600px  
 
-![Mobile Design 1](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Mobile_1.png)  
+![Mobile Design 1](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Mobile_1.png =321x568)  
 
-![Mobile Design 2](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Mobile_2.png)  
+![Mobile Design 2](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Mobile_2.png =321x568)  
 
 Tablet - more than 600px  
 
