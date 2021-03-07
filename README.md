@@ -93,6 +93,8 @@ Even though the *dt_txt* value shows that this weather information is for midnig
 
 ![Night Day Error](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Night_Day_Error.png)  
 
+*01d* Icon png:  
+
 ![Sunny Icon](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Sunny_Icon.png)  
 
 This error seemed to be consistent for a location. In other words, each location returned consistent values, even if daytime information was flipped with nighttime data -- no location ever returned data with some days correct and others incorrect. It was all or nothing.  
