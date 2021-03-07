@@ -70,6 +70,40 @@ If the first query is successful, the application asks the API for 5 day weather
 ## <a name="challenges"></a> Challenges
 [Contents](#contents)  
 
+This project was not without its challenges. 
+
+#### Dates  
+Since it was possible for a user to query a location where the local date differed from the client, the application had to adjust based on the timezone difference. For example, if a user sitting in Chicago queries Funafuti (the capital of Tuvalu) at 8pm on May 6th, (Chicago time), the current date and time in Funafuti will be 2pm May 7th (depending on Daylight Savings Time). So the application could not simply generate a new Date() object in JavaScript, since JavaScript uses the client's timezone. Fortunately, the API provides a timezone key returning the number of seconds offset between the queried location and Coordinated Universal Time (UTC).  
+
+[!Timezone Key](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Timezone.png)  
+
+A function was written that took in this offset and combined it with the current UTC timestamp to return an accurate date-time string for the queried location.  
+
+[!To Local Date](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Local_Date.png)  
+
+#### Four Day Forecast  
+The [!openweathermap API](https://openweathermap.org/forecast5) returns five day forecast data. However it turned out to be impossible for the application to display five day weather information. Due to the previously-discussed date issue, if a user queried a locale already in 'tomorrow' (relative to the client), the 'fifth' card day would actually be the sixth relative to the client's date. While the application adjusted which information was displayed, the API used the client's local date as the starting point for the five days.  
+
+In practical terms, if a user in Chicago queried Funafuti on a Sunday, then the API would return results for Monday, Tuesday, Wednesday, Thursday, and Friday. But the first date displayed by the application would be Monday, since Funafuti is a day ahead of Chicago. When the application looked for the fifth date to display, there would be no data from the API. Thus, the decision was made to only display four days / three nights so as to harmonize results. 
+
+#### Data Accuracy  
+Sometimes, the API returned daytime weather data for nighttime timestamps.  
+
+Even though the *dt_txt* value shows that this weather information is for midnight on March 10, 2021, the weather icon (*01d*) is the icon for a sunny sky.  
+
+[!Night Day Error](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Night_Day_Error.png)  
+
+[!Sunny Icon](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Sunny_Icon.png)  
+
+This error seemed to be consistent for a location. In other words, each location returned consistent values, even if daytime information was flipped with nighttime data -- no location ever returned data with some days correct and others incorrect. It was all or nothing.  
+
+This image (with a previous nighttime card styling) demonstrates this flipped-data phenomenon.
+
+[!Previous Night Cards](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Previous_Night_Cards.png)  
+
+While the development team is disappointed about this issue from the API, the application works seamlessly in its own right. It consistently displays current and future weather results in a responsive and intuitive layout while validating user input, persisting previous searches, and tracking the state of the application (screen width, which elements are selected, etc.). Thank you for reading, and enjoy the application!
+
+
 ## <a name="license"></a> License
 [Contents](#contents)  
 

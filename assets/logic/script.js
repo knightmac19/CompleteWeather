@@ -92,6 +92,7 @@ $(document).ready(() => {
             },
             dataType: 'json',
             success: function(data) {
+                console.log(data)
               
                 updateList(citiesList, data.name);
                 setLocal(citiesList);
