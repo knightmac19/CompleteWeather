@@ -119,7 +119,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Patrick Dunn // [knightmac19](https://github.com/knightmac19)
 
-Email me with questions &/or suggestions at [pmdunn78@gmail.com](mailto:pmdunn78@gmail.com)
+Email with questions &/or suggestions at [pmdunn78@gmail.com](mailto:pmdunn78@gmail.com)
 
 
 
