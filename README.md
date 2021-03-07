@@ -38,7 +38,7 @@ If the API does not return a successful response a modal will inform the user th
 
 ## <a name="responsive"></a> Responsive Design
 [Contents](#contents)  
-Development began with designing the desired layout. The application displays all information cleanly with two main layouts: screens less than 600px wide and screens more than 600px wide. Beyond distinct layous, content areas resize themselves proportionally to the screen as the width grows or shrinks. 
+Development began with designing the desired layout. The application displays all information cleanly with two main layouts: screens less than 600px wide and screens more than 600px wide. Beyond distinct layouts, content areas resize themselves proportionally to the screen as the width grows or shrinks. 
 
 Mobile - less than 600px  
 
