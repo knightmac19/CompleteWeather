@@ -9,7 +9,6 @@ var yek = '8867845d766766103b7874c8ae32f415';
 const key = reverseHash(yek);
 
 $(document).ready(() => {
-    console.log('script ready!');
     var currentCol = $('#current-col');
     var fiveLg = $('.five-lg');
     var modal = $('#exampleModal');
@@ -92,7 +91,6 @@ $(document).ready(() => {
             },
             dataType: 'json',
             success: function(data) {
-                console.log(data)
               
                 updateList(citiesList, data.name);
                 setLocal(citiesList);
