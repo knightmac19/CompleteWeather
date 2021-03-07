@@ -97,13 +97,13 @@ Even though the *dt_txt* value shows that this weather information is for midnig
 
 ![Sunny Icon](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Sunny_Icon.png)  
 
-This error seemed to be consistent for a location. In other words, each location returned consistent values, even if daytime information was flipped with nighttime data -- no location ever returned data with some days correct and others incorrect. It was all or nothing.  
+This error seemed to be consistent for each location. In other words, each location returned consistent values, even if daytime information was flipped with nighttime data -- no location ever returned data with some days correct and others incorrect. It was all or nothing.  
 
 This image (with a previous nighttime card styling) demonstrates this flipped-data phenomenon. As you can see, not only are the icons incorrect, but the API would have you believe the daytime temperatures are lower than the nighttime temperatures.  
 
 ![Previous Night Cards](https://github.com/knightmac19/CompleteWeather/blob/main/assets/img/Previous_Night_Cards.png)  
 
-While the development team is disappointed about this issue from the API, the application works seamlessly in its own right. It consistently displays current and future weather results in a responsive and intuitive layout while validating user input, persisting previous searches, and tracking the state of the application (screen width, which elements are selected, etc.). Thank you for reading, and enjoy the application!
+While this issue is disappointing, the application works seamlessly in its own right. It consistently displays current and future weather results in a responsive and intuitive layout while validating user input, persisting previous searches, and tracking the state of the application (screen width, which elements are selected, etc.). Thank you for reading, and enjoy the application!
 
 ## <a name="license"></a> License
 [Contents](#contents)  
